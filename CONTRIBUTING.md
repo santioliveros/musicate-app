@@ -50,7 +50,7 @@ Una historia está terminada cuando:
 - [ ] Funciona en Android real; en iOS se probó por TestFlight o build interna.
 - [ ] Tiene estados vacíos, de carga y de error.
 - [ ] Respeta las reglas de RLS (probado con dos cuentas).
-- [ ] Pasa lint y typecheck.
+- [ ] Pasa typecheck.
 - [ ] Tiene eventos de analítica si corresponde.
 - [ ] Está documentada (README o doc de feature) si cambia el comportamiento.
 - [ ] Se probó con una cuenta nueva, no solo con la de desarrollo.

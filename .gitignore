@@ -31,6 +31,13 @@ GoogleService-Info.plist
 supabase/.branches
 supabase/.temp
 
+# Herramientas locales
+.npm-cache/
+.npm-logs/
+.expo-home/
+.home/
+.scaffold-tmp/
+
 # Testing
 coverage/
 *.tsbuildinfo

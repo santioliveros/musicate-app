@@ -57,7 +57,7 @@ El cliente habla directo con Supabase usando la clave anónima y el JWT del usua
 | Listas | FlashList | Performance en listados de avisos y perfiles. |
 | Imágenes | expo-image + expo-image-manipulator | Avatar comprimido y cacheado. |
 | Notificaciones | expo-notifications | Push con Expo sin backend propio. |
-| Almacenamiento local | expo-secure-store | Tokens de sesión. |
+| Sesión local | AsyncStorage | Persistencia de la sesión de Supabase. |
 | Backend | Supabase (Postgres, Auth, Storage, Edge Functions) | Auth, RLS, storage y push sin operar servidores. |
 | Analítica | PostHog | Embudos, retención y feature flags. |
 | Errores | Sentry | Crash reporting y tracing básico. |
@@ -68,37 +68,31 @@ El cliente habla directo con Supabase usando la clave anónima y el JWT del usua
 
 ```text
 musikate/
-├── app/                        # Rutas de Expo Router
-│   ├── (auth)/                 # login, código, onboarding
-│   ├── (tabs)/                 # novedades, avisos, buscar, perfil
-│   ├── perfil/[username].tsx
-│   ├── aviso/[id].tsx
-│   ├── aviso/nuevo.tsx
-│   └── _layout.tsx
 ├── src/
+│   ├── app/                    # Rutas de Expo Router
+│   │   ├── (auth)/             # login, código, onboarding
+│   │   ├── (tabs)/             # novedades, avisos, buscar, perfil
+│   │   ├── index.tsx
+│   │   └── _layout.tsx
 │   ├── components/             # UI reutilizable
 │   ├── features/
 │   │   ├── auth/
-│   │   ├── profile/
-│   │   ├── listings/
-│   │   ├── network/
-│   │   └── notifications/
-│   ├── lib/                    # supabase, analytics, sentry, media
-│   ├── hooks/
+│   │   └── profile/
+│   ├── lib/                    # supabase y React Query
 │   ├── theme/                  # tokens, tipografía, espaciado
-│   └── types/                  # tipos generados y de dominio
+│   └── types/                  # tipos de dominio
 ├── supabase/
 │   ├── migrations/
-│   ├── functions/
-│   │   ├── send-push/
-│   │   └── delete-account/
-│   └── seed.sql
+│   └── README.md
 ├── assets/
 ├── docs/
 ├── app.json
 ├── eas.json
-└── package.json
+├── package.json
+└── package-lock.json
 ```
+
+Las rutas de detalle de aviso y perfil público se agregan cuando exista el módulo de avisos.
 
 **No hay monorepo.** Una app y un backend. Si más adelante aparece un panel de administración web, se evalúa separarlo.
 
@@ -237,17 +231,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm lint
-      - run: pnpm typecheck
-      - run: pnpm test -- --runInBand
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
 ```
 
 ## 8. Costos estimados

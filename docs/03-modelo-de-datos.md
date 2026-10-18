@@ -110,13 +110,17 @@ create table profiles (
   city text not null default 'Montevideo',
   country text not null default 'UY',
   looking_for text[] not null default '{}',
+  instagram_url text,
+  youtube_url text,
+  spotify_url text,
+  website_url text,
   followers_count integer not null default 0,
   following_count integer not null default 0,
   onboarded_at timestamptz,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   deleted_at timestamptz,
-  constraint username_format check (username ~ '^[a-z0-9_]{3,20}$'),
+  constraint username_format check (username::text ~ '^[a-z0-9_]{3,20}$'),
   constraint display_name_len check (char_length(display_name) between 2 and 40),
   constraint bio_len check (bio is null or char_length(bio) <= 160),
   constraint looking_for_valid check (
@@ -342,18 +346,18 @@ Las funciones de trigger que escriben en tablas de otros usuarios son `security 
 
 **Géneros**: rock, pop, indie, punk, metal, hip hop, rap, trap, cumbia, reggae, ska, jazz, blues, funk, soul, electrónica, house, techno, folclore, tango, murga, candombe, clásica, experimental, otros.
 
-Los catálogos se cargan en `supabase/seed.sql` y se pueden ampliar sin migración.
+Los catálogos se cargan en la migración `0001_extensions_and_catalogs.sql` y se pueden ampliar sin migración.
 
 ## 10. Estrategia de migraciones
 
-1. `0001_extensiones_y_catalogos.sql`: extensiones (`citext`, `pg_trgm`, `pg_cron`), enums, `instruments`, `genres`, seed.
-2. `0002_perfiles.sql`: `profiles`, joins, trigger de alta.
-3. `0003_avisos.sql`: `listings`, `listing_contacts`, `listing_interests`.
-4. `0004_notificaciones_y_confianza.sql`: `notifications`, `push_tokens`, `reports`, `blocks`.
-5. `0005_rls.sql`: función `is_blocked`, políticas de tablas y storage.
-6. `0006_triggers_e_indices.sql`: contadores, notificaciones, límites, índices, cron.
+1. `0001_extensions_and_catalogs.sql`: extensiones (`citext`, `pg_trgm`), enum `skill_level`, `instruments`, `genres` y seed. **Hecha.**
+2. `0002_profiles.sql`: `profiles`, joins, trigger de alta, RLS e índices. **Hecha.**
+3. `0003_storage_avatars.sql`: bucket `avatars` y políticas. **Hecha.**
+4. `0004_listings.sql`: `listings`, `listing_contacts`, `listing_interests` y RLS. **Próxima.**
+5. `0005_notifications_and_trust.sql`: `notifications`, `push_tokens`, `reports`, `blocks`, `is_blocked`.
+6. `0006_listings_triggers.sql`: contadores, notificaciones, límites, `pg_cron` y expiración de avisos.
 
-Fase 2 agrega `0007_contenido.sql` con `posts`, `post_likes`, `comments` y `saved_posts`.
+Fase 2 agrega `0007_content.sql` con `posts`, `post_likes`, `comments` y `saved_posts`.
 
 Reglas: migraciones inmutables una vez aplicadas en producción; cambios con una migración nueva; `supabase db diff` para verificar que el esquema remoto coincide.
 

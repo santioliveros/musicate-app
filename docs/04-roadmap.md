@@ -12,6 +12,8 @@
 - **Método:** milestones, no calendario. Si una fase se estira, se estira; no se acumula deuda.
 
 > A 2-3 h/semana, la constancia vale más que la velocidad. El objetivo es llegar a una alpha usable sin quemarse en el intento.
+>
+> **Ejecución:** el scaffold de la fase 1 ya está en el repo (auth, perfil y tabs). La fase 0 se cubrió con conversaciones informales; las 10 entrevistas formales quedan pendientes si se quiere validar con más rigor.
 
 ## 2. Calendario resumen
 

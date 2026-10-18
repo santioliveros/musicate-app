@@ -3,7 +3,7 @@
 **La red social de la escena musical uruguaya.**
 Mostrá quién sos, encontrá con quién tocar y seguí lo que pasa en Montevideo.
 
-> Estado: **documentación v0.2 — plan utilidad-first**. Todavía no hay código. El MVP arranca con perfiles y avisos; los covers verticales son fase 2.
+> Estado: **scaffold v0.1**. La app base ya está en el repo: Expo + Expo Router, Supabase, auth por email y perfil musical. El módulo de avisos es el próximo paso.
 >
 > Repositorio: [santioliveros/musikate-app](https://github.com/santioliveros/musikate-app)
 
@@ -25,26 +25,48 @@ El orden es deliberado: con 2-3 horas por semana, construir primero el video ser
 
 | Área | Estado |
 | --- | --- |
-| Visión y alcance | Documentados |
-| Arquitectura y modelo de datos | Documentados |
-| Roadmap y backlog | Documentados |
-| Validación con la escena | Próximo paso |
-| Scaffold del repositorio | Después de validar |
+| App base (Expo + Router + tema) | Listo |
+| Auth con email OTP | Listo (requiere Supabase configurado) |
+| Perfil musical, avatar y taxonomía | Listo |
+| Búsqueda de perfiles | Básica |
+| Validación formal con la escena | Pendiente; ya hubo conversaciones informales |
+| Avisos | Próximo módulo |
 | Alpha privada (20-30 personas) | Mes 8-12 |
-| Beta con video | Mes 15-18 |
 
 ## Stack
 
 - **App**: React Native + Expo (TypeScript, Expo Router)
-- **Backend**: Supabase (Postgres, Auth, Storage, Edge Functions)
+- **Backend**: Supabase (Postgres, Auth, Storage)
 - **Entornos**: `develop` (interno) y `prod` (alpha y tiendas), sin staging
 - **Builds**: EAS Build / EAS Submit
-- **Analítica y errores**: PostHog + Sentry
-- **Video**: fase 2 (expo-video, expo-camera)
+- **Video**: fase 2
 
-## Ritmo
+## Empezar
 
-2-3 horas por semana, un bloque fijo. El plan es por hitos, no por fechas: alpha en 8-12 meses, beta con video en 15-18. Si aparece más tiempo o ayuda, se acelera.
+```powershell
+npm install
+Copy-Item .env.example .env.local
+# completá EXPO_PUBLIC_SUPABASE_URL y EXPO_PUBLIC_SUPABASE_ANON_KEY
+npm start
+```
+
+Antes de probar el login, creá el proyecto de Supabase y aplicá las migraciones. Las instrucciones están en [supabase/README.md](supabase/README.md).
+
+```powershell
+npm run typecheck
+```
+
+## Cómo está organizado
+
+```text
+src/app/              Rutas de Expo Router
+  (auth)/             login, código y onboarding
+  (tabs)/             Novedades, Avisos, Buscar, Perfil
+src/components/       UI reutilizable
+src/features/         auth, profile
+src/lib/              Supabase y React Query
+supabase/migrations/  Esquema, RLS y storage
+```
 
 ## Documentación
 
@@ -63,13 +85,9 @@ El orden es deliberado: con 2-3 horas por semana, construir primero el video ser
 | [Preguntas abiertas](docs/10-preguntas-abiertas.md) | Decisiones pendientes. |
 | [Decisiones (ADR)](docs/decisiones/README.md) | Registro de decisiones. |
 
-## Cómo trabajar en este repo
-
-Ver [CONTRIBUTING.md](CONTRIBUTING.md). En resumen: un bloque de 2-3 h por semana, una historia a la vez, decisiones en ADRs y demo al final de cada fase.
-
 ## Próximos pasos
 
-1. **Fase 0:** landing, waitlist, 10 entrevistas y 10 avisos semilla.
-2. **Fase 1:** scaffold de Expo + Supabase, auth y perfil.
-3. **Fase 2:** avisos, follows y notificaciones.
-4. **Alpha:** 20-30 personas, medición y decisión sobre video.
+1. Crear el proyecto Supabase dev y aplicar las migraciones.
+2. Probar registro, onboarding y perfil en un teléfono real.
+3. Construir el módulo de avisos (migración `0004` + pantallas).
+4. Sembrar 15 perfiles y 10 avisos para la alpha.

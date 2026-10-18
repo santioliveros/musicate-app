@@ -28,6 +28,8 @@
 
 **Recomendación:** 6 desconocidos + 4 conocidos, todos con actividad musical real. **Bloquea:** el mes 0.
 
+> Estado: ya hubo conversaciones informales con gente del entorno. Faltan las 10 entrevistas formales si se quiere validar con más rigor; no bloquean el scaffold.
+
 ### D2 · ¿De dónde salen los 20-30 alpha testers?
 
 | Opción | Consecuencia |
