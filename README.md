@@ -1,7 +1,7 @@
 # musikate
 
-**La red social de la escena musical uruguaya.**
-Mostrá quién sos, encontrá con quién tocar y seguí lo que pasa en Montevideo.
+**La red social para mostrar lo que hacés, encontrar con quién tocar y seguir a la gente de la escena.**
+Mostrá quién sos, encontrá con quién tocar y seguí a la gente que hace música.
 
 > Estado: **scaffold v0.1**. La app base ya está en el repo: Expo + Expo Router, Supabase, auth por email y perfil musical. El módulo de avisos es el próximo paso.
 >
@@ -9,11 +9,11 @@ Mostrá quién sos, encontrá con quién tocar y seguí lo que pasa en Montevide
 
 ## El problema en una frase
 
-La escena musical de Montevideo ya existe, pero está dispersa: las búsquedas de bandas viven en grupos de WhatsApp, los covers en Instagram, los shows en flyers sueltos y las clases en el boca a boca. No hay un lugar donde mostrarse, encontrarse y seguir lo que pasa.
+La escena musical ya existe, pero está dispersa: las búsquedas de bandas viven en grupos de WhatsApp, los covers en Instagram, los shows en flyers sueltos y las clases en el boca a boca. No hay un lugar donde mostrarse, encontrarse y seguir lo que pasa.
 
 ## La apuesta
 
-Una red social vertical, local y de nicho:
+Una red social vertical, de nicho:
 
 - **MVP:** perfil musical + avisos para encontrar integrantes, bandas, productores y clases + follows y novedades.
 - **Fase 2:** covers en video vertical, estilo TikTok/Reels.

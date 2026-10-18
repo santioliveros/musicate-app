@@ -3,6 +3,7 @@
     "name": "musikate",
     "slug": "musikate",
     "version": "0.1.0",
+    "description": "La red social para mostrar lo que hacés, encontrar con quién tocar y seguir a la gente de la escena.",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "musikate",
