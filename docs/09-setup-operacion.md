@@ -47,8 +47,9 @@ El repo ya contiene `docs/`, `README.md` y `CONTRIBUTING.md`. Como `create-expo-
 cd C:\Users\satio\Documents
 npx create-expo-app@latest musikate-scaffold --template default
 
-# Copiar el scaffold al repo, sin pisar README ni docs
-robocopy .\musikate-scaffold .\musikate /E /XD .git node_modules /XF README.md
+# Copiar el scaffold al repo, sin pisar README ni la configuración propia
+robocopy .\musikate-scaffold .\musikate /E /XD .git node_modules `
+  /XF README.md .gitignore .editorconfig .gitattributes
 ```
 
 Alternativa más simple: crear el proyecto en una carpeta nueva y mover `docs/`, `README.md`, `CONTRIBUTING.md`, `.gitignore`, `.editorconfig` y `.gitattributes` allí.

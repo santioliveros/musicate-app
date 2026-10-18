@@ -130,6 +130,6 @@ Métricas de apoyo en [Métricas y experimentos](06-metricas-experimentos.md).
 - **Derechos de autor**: los covers son contenido de terceros. Requiere términos, notificación y baja, y asesoría legal antes del lanzamiento público.
 - **Moderación**: UGC en una app social exige reportar, bloquear y moderar (también por reglas de tienda).
 - **Scope creep**: siete propósitos compiten por el MVP. El roadmap los ordena; el backlog los contiene.
-- **Ancho de banda**: una sola persona construyendo. El plan está dimensionado para 10-20 h/semana y tiene Plan B.
+- **Ancho de banda**: una sola persona construyendo. El plan está dimensionado para 25-30 h/semana en el escenario de 8 semanas, y para 15-20 h/semana en el de 12, con recortes previstos.
 
 Detalle en [Riesgos y legal](07-riesgos-legal.md).

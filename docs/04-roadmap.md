@@ -7,7 +7,7 @@
 
 **Plan A — 8 semanas.** Asume 25-30 horas efectivas por semana, una persona con experiencia previa en React/TypeScript y la IA como multiplicador. Es un ritmo exigente: equivale a un trabajo part-time intenso.
 
-**Plan B — 12 semanas.** Asume 15-20 horas por semana y el mismo alcance, con menos presión. Es el escenario recomendable si no hay experiencia previa o si el trabajo/timepo no permite 25 h.
+**Plan B — 12 semanas.** Asume 15-20 horas por semana y el mismo alcance, con menos presión. Es el escenario recomendable si no hay experiencia previa o si el trabajo/tiempo no permite 25 h.
 
 - **Alcance:** beta cerrada con 30 personas, no lanzamiento público.
 - **Definición de éxito:** 30 usuarios reales usando la app, con los cuatro flujos críticos funcionando y métricas instrumentadas.

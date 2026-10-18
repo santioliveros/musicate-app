@@ -5,7 +5,7 @@
 
 ## 1. Objetivo
 
-Lanzar en 8 semanas una app móvil (iOS + Android) que permita a 30-50 personas de la escena de Montevideo:
+Lanzar en 8-12 semanas (según dedicación) una app móvil (iOS + Android) que permita a 30-50 personas de la escena de Montevideo:
 
 1. crearse un perfil musical,
 2. publicar un cover corto, una foto o una crónica,

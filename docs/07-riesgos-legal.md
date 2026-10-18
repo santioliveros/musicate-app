@@ -37,6 +37,7 @@ Es el riesgo legal más importante del proyecto, porque el contenido central son
 5. **Contenido semilla con permiso escrito**: no usar videos de artistas sin autorización, ni siquiera para "arrancar".
 6. **Moderación**: revisar reportes de copyright y conservar evidencia.
 7. **Asesoría legal antes del lanzamiento público**: revisar términos, licencias y procedimiento con un abogado especializado en propiedad intelectual.
+8. **Entidades de gestión**: en Uruguay, AGADU administra derechos de autores. Consultar qué licencias cubren el entorno digital y si existe una vía colectiva para covers.
 
 ### Lo que no hay que asumir
 

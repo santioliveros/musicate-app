@@ -350,7 +350,7 @@ using (
 );
 ```
 
-Las políticas de escritura siempre incluyen `auth.uid()`; ninguna confía en un `author_id` enviado por el cliente. La misma función se usa en el feed, la búsqueda y el perfil.
+Las políticas de escritura siempre incluyen `auth.uid()`; ninguna confía en un `author_id` enviado por el cliente. La misma función se usa en el feed, la búsqueda y el perfil: un perfil bloqueado no aparece en sugerencias ni resultados, y el acceso directo muestra un estado de bloqueo.
 
 ## 6. Storage
 
@@ -421,7 +421,7 @@ Los catálogos se cargan en `supabase/seed.sql` y se pueden ampliar sin migraci�
 3. `0003_contenido_social.sql`: `posts`, `post_likes`, `comments`, `saved_posts`, `follows`.
 4. `0004_avisos.sql`: `listings`, `listing_contacts`, `listing_interests`.
 5. `0005_notificaciones_y_confianza.sql`: `notifications`, `push_tokens`, `reports`, `blocks`.
-6. `0006_rls.sql`: políticas de todas las tablas y storage.
+6. `0006_rls.sql`: función `is_blocked`, políticas de todas las tablas y storage.
 7. `0007_triggers_e_indices.sql`: contadores, notificaciones, límites, índices, cron.
 
 Reglas: migraciones inmutables una vez aplicadas en producción; cambios con una migración nueva; `supabase db diff` para verificar que el esquema remoto coincide.

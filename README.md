@@ -45,7 +45,7 @@ No es un servicio de streaming. No compite con Spotify: compite con la sensació
 | [PRD del MVP](docs/01-prd-mvp.md) | Qué se construye, con criterios de aceptación. |
 | [Arquitectura](docs/02-arquitectura.md) | Cómo se construye y por qué. |
 | [Modelo de datos](docs/03-modelo-de-datos.md) | Tablas, relaciones, RLS e índices. |
-| [Roadmap](docs/04-roadmap.md) | Plan de 8 semanas y fases posteriores. |
+| [Roadmap](docs/04-roadmap.md) | Plan de 8-12 semanas y fases posteriores. |
 | [Backlog](docs/05-backlog.md) | Historias priorizadas y estimaciones. |
 | [Métricas y experimentos](docs/06-metricas-experimentos.md) | Qué medimos y cómo validamos. |
 | [Riesgos y legal](docs/07-riesgos-legal.md) | Derechos, moderación, privacidad y tiendas. |
