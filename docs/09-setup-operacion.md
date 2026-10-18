@@ -40,6 +40,13 @@
 
 ## 3. Bootstrap del repositorio
 
+Si empezás en otra máquina, cloná el repo:
+
+```powershell
+git clone https://github.com/santioliveros/musikate-app.git
+cd musikate-app
+```
+
 El repo ya contiene `docs/`, `README.md` y `CONTRIBUTING.md`. Como `create-expo-app` necesita una carpeta vacía, se genera el scaffold aparte y se copia:
 
 ```powershell

@@ -4,6 +4,8 @@
 Mostrá lo que hacés, encontrá con quién tocar y seguí a la gente que mueve la música en Montevideo.
 
 > Estado: **v0.1 — fundaciones**. Todavía no hay código. Este repo contiene la visión, el alcance del MVP, la arquitectura, el roadmap y el backlog acordados para arrancar.
+>
+> Repositorio: [santioliveros/musikate-app](https://github.com/santioliveros/musikate-app)
 
 ## El problema en una frase
 
