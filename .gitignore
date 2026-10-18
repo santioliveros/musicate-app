@@ -1,0 +1,57 @@
+# Dependencias
+node_modules/
+.pnpm-store/
+
+# Expo
+.expo/
+.expo-shared/
+dist/
+web-build/
+expo-env.d.ts
+
+# Builds nativos (Expo prebuild / CNG)
+android/
+ios/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# Entornos y secretos
+.env
+.env.local
+.env.*.local
+!.env.example
+google-services.json
+GoogleService-Info.plist
+
+# Supabase
+supabase/.branches
+supabase/.temp
+
+# Testing
+coverage/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# Sentry / EAS
+.sentryclirc
