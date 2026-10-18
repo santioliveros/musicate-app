@@ -217,7 +217,9 @@ feat/x ──PR──> main ──auto──> develop (Supabase dev + build prev
                   └──tag v0.1.0──> prod (Supabase prod + build production)
 ```
 
-### CI mínimo (GitHub Actions)
+### CI previsto (GitHub Actions)
+
+> El workflow todavía no está en el repo: el token de GitHub usado para el push no tiene scope `workflow`. Se agrega cuando se refresque el permiso.
 
 ```yaml
 name: CI
