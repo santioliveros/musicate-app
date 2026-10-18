@@ -1,6 +1,6 @@
 # Setup y operación
 
-> Versión 0.1 · 18/10/2026
+> Versión 0.2 · 18/10/2026
 > Instrucciones para pasar de la documentación al primer build. El código todavía no existe: esto es el manual de arranque.
 
 ## 1. Requisitos
@@ -14,8 +14,8 @@
 - Node.js LTS (24 o superior) y `pnpm` (`corepack enable`).
 - Git.
 - Docker Desktop (solo si se usa Supabase local; si no, proyecto cloud de desarrollo).
-- Expo Go para pruebas rápidas de UI; **development build** para cámara, video y push.
-- VS Code con extensiones: ESLint, Prettier, Tailwind? (no), Expo Tools, Supabase.
+- Expo Go para pruebas rápidas de UI; **development build** para push y cámara.
+- VS Code con extensiones: ESLint, Prettier, Expo Tools, Supabase.
 
 ### Cuentas
 - GitHub.
@@ -24,19 +24,21 @@
 - Apple Developer Program (US$ 99/año).
 - Google Play Console (US$ 25 único).
 - PostHog y Sentry (planes gratuitos).
-- Dominio y correo (para términos, privacidad y soporte).
+- Dominio y correo (para landing, términos, privacidad y soporte).
 
 ## 2. Costos de arranque
 
 | Concepto | Costo | Cuándo |
 | --- | --- | --- |
-| Apple Developer | US$ 99/año | Semana 1-2 |
-| Google Play | US$ 25 único | Semana 2 |
-| Dominio | US$ 12-20/año | Semana 2 |
-| Supabase Pro (prod) | ~US$ 25/mes | Al empezar la beta; dev puede ir en free |
+| Apple Developer | US$ 99/año | Mes 1-2 |
+| Google Play | US$ 25 único | Mes 1-2 |
+| Dominio | US$ 12-20/año | Mes 0 |
+| Supabase Pro (prod) | ~US$ 25/mes | Al empezar la alpha; dev puede ir en free |
 | EAS | Gratis (cola) o US$ 99/mes | Opcional |
 | Total inicial | ~US$ 125-150 | — |
-| Total mensual beta | ~US$ 25-45 | — |
+| Total mensual en alpha | ~US$ 25-35 | — |
+
+Sin video en el MVP, el storage y el egress son mínimos.
 
 ## 3. Bootstrap del repositorio
 
@@ -59,8 +61,6 @@ robocopy .\musikate-scaffold .\musikate /E /XD .git node_modules `
   /XF README.md .gitignore .editorconfig .gitattributes
 ```
 
-Alternativa más simple: crear el proyecto en una carpeta nueva y mover `docs/`, `README.md`, `CONTRIBUTING.md`, `.gitignore`, `.editorconfig` y `.gitattributes` allí.
-
 Luego:
 
 ```powershell
@@ -69,18 +69,19 @@ corepack enable
 pnpm install
 ```
 
-### Dependencias de la app
+### Dependencias de la app (MVP)
 
 ```powershell
-npx expo install expo-image expo-video expo-image-picker expo-camera `
-  expo-notifications expo-haptics expo-secure-store expo-apple-authentication `
-  expo-web-browser expo-linking
+npx expo install expo-image expo-image-manipulator expo-image-picker `
+  expo-notifications expo-haptics expo-secure-store expo-web-browser expo-linking
 
 pnpm add @supabase/supabase-js @tanstack/react-query react-hook-form zod `
   @hookform/resolvers zustand posthog-react-native @sentry/react-native
 
 pnpm add -D supabase eslint prettier typescript @types/react
 ```
+
+**Fase 2 (no instalar ahora):** `expo-video`, `expo-camera`, compresión de video y procesamiento de medios.
 
 > Las versiones se fijan en el momento del scaffold. No copiar versiones de este documento a ciegas: usar `expo install` para que Expo elija las compatibles.
 
@@ -100,7 +101,17 @@ tsconfig.json
 
 ## 4. Supabase
 
-### Opción A · Local (recomendada para desarrollo)
+### Opción A · Cloud (recomendada para empezar)
+
+1. Crear proyecto **dev** en Supabase (región São Paulo si está disponible).
+2. `npx supabase link --project-ref <ref-dev>`.
+3. `npx supabase db push` para aplicar migraciones.
+4. Copiar URL y `anon key` a `.env.local`.
+5. Repetir con un proyecto **prod** cuando llegue la alpha.
+
+> A 2-3 h/semana, un solo proyecto dev al inicio es suficiente. El proyecto prod se crea en el mes 7-9, antes de invitar testers.
+
+### Opción B · Local (para probar migraciones)
 
 Requiere Docker Desktop.
 
@@ -112,22 +123,14 @@ npx supabase db reset   # aplica migraciones y seed
 
 La salida de `start` da la URL local y las claves. Se copian a `.env.local`.
 
-### Opción B · Cloud
-
-1. Crear proyecto en Supabase (región São Paulo si está disponible).
-2. `npx supabase link --project-ref <ref>`.
-3. `npx supabase db push` para aplicar migraciones.
-4. Copiar URL y `anon key` a `.env.local`.
-
 ### Auth
 
 En el panel de Supabase:
 
 - Habilitar Email OTP.
-- Habilitar Google (client ID y secret).
-- Habilitar Apple (service ID, team ID, key).
+- Configurar la plantilla de email con la marca.
 - Agregar redirect URLs: `musikate://auth/callback` y la URL de desarrollo.
-- Configurar plantilla de email con marca.
+- Google/Apple se agregan en fase 2, antes de publicar en tiendas.
 
 ### Migraciones
 
@@ -198,7 +201,7 @@ El build se instala en el dispositivo mediante un link; no hace falta Mac.
 
 `development` y `preview` son dos formas de usar el mismo entorno develop: dev client para tu teléfono, preview para testers. `production` es el único perfil que apunta a prod.
 
-Para probar un release candidate contra prod sin publicarlo: `eas build --profile production`, `eas submit` a TestFlight/Play Internal, y recién después liberar en la tienda.
+Para la alpha: build `production`, `eas submit` a TestFlight/Play Internal, y recién después liberar en la tienda.
 
 Checklist de release:
 
@@ -212,7 +215,7 @@ Checklist de release:
 - [ ] Notas de versión escritas.
 - [ ] Build subido a TestFlight/Play Internal y probado por 2 personas.
 
-## 8. Operación de la beta
+## 8. Operación de la alpha
 
 ### Soporte
 - Canal único (WhatsApp o email) publicado en la app y la landing.
@@ -220,17 +223,17 @@ Checklist de release:
 - Plantillas para bugs, reportes y pedidos de baja.
 
 ### Moderación
-- Revisar reportes todos los días.
+- Revisar reportes todos los días, 15 minutos.
 - Tiempo de respuesta objetivo: 24 h; casos graves, inmediato.
 - Registrar decisión y fecha en `reports`.
 
 ### Métricas
 - Revisión semanal del tablero (ver [Métricas](06-metricas-experimentos.md)).
-- Un documento por semana con: qué cambió, qué aprendimos, qué sigue.
+- Una nota por semana con: qué cambió, qué aprendimos, qué sigue.
 
 ### Backups
 - Supabase Pro con backups diarios.
-- Prueba de restauración antes de la beta.
+- Prueba de restauración antes de la alpha.
 - Export mensual de la base a un storage externo.
 
 ### Incidentes
@@ -239,14 +242,25 @@ Checklist de release:
 - **Contenido grave**: ocultar, preservar evidencia, evaluar denuncia y comunicación.
 - **Pérdida de datos**: restaurar backup, comunicar y documentar.
 
-## 9. Checklist antes de la primera línea de código
+## 9. Ritmo de trabajo
+
+- **Un bloque de 2-3 h por semana**, siempre el mismo día si se puede.
+- Al final del bloque: 15 minutos para actualizar el backlog y anotar el siguiente paso.
+- **Una historia a la vez.** Si no cabe en 3 semanas, se parte.
+- **Demo visible:** al final de cada fase, algo que se pueda mostrar en un teléfono.
+- **Semana perdida:** no se recupera con una maratón; se retoma el bloque siguiente.
+
+## 10. Checklist antes de la primera línea de código
 
 - [ ] Cuenta de Apple Developer iniciada (la verificación demora).
 - [ ] Cuenta de Google Play creada.
 - [ ] Proyecto Supabase dev creado.
 - [ ] Dominio comprado y correo de soporte funcionando.
+- [ ] Landing y waitlist de la fase 0 publicadas.
 - [ ] Repositorio en GitHub con `main` protegida.
 - [ ] Términos y privacidad en borrador (aunque sea en Notion).
-- [ ] Lista de 30 beta testers y 10 creadores semilla.
-- [ ] Presupuesto mensual aprobado (~US$ 30-50).
-- [ ] Decididas las [preguntas abiertas](10-preguntas-abiertas.md) que bloquean el diseño.
+- [ ] Lista de 30 candidatos para la alpha.
+- [ ] Presupuesto mensual aprobado (~US$ 30-35).
+- [ ] Las 10 entrevistas de la fase 0 agendadas.
+
+La decisión de arrancar con perfiles + avisos y dejar el video para fase 2 está en [ADR-0006](decisiones/0006-ruta-utilidad-first-y-mvp-sin-video.md).

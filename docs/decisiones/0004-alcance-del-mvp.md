@@ -1,9 +1,11 @@
 # ADR-0004 — Alcance y recortes del MVP
 
-- **Estado**: aceptada
+- **Estado**: reemplazada por [ADR-0006](0006-ruta-utilidad-first-y-mvp-sin-video.md)
 - **Fecha**: 18/10/2026
 - **Decisores**: fundador del proyecto
 - **Revisión**: checkpoint de la semana 4
+
+> **Nota:** esta decisión describía un MVP con covers, fotos y feed. La ruta cambió por la disponibilidad real de 2-3 h/semana: el MVP pasa a perfiles + avisos y el video a fase 2. Se conserva como historial.
 
 ## Contexto
 

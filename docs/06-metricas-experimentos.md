@@ -1,111 +1,99 @@
 # Métricas y experimentos
 
-> Versión 0.1 · 18/10/2026
-> Si no se mide, no se aprende. Pero medir de más también distrae: estas son las métricas que importan.
+> Versión 0.2 · 18/10/2026
+> En la alpha no se mide vanidad: se mide si la gente encuentra y responde.
 
 ## 1. North Star
 
 **Conexiones musicales semanales (CMS):** cantidad de personas únicas por semana que hacen al menos una de estas acciones:
 
-- publican un cover, foto o crónica,
 - publican un aviso,
 - envían un "me interesa".
 
-No mide descargas ni registros: mide personas haciendo cosas con otras personas. Es la métrica que dice si Musikate es una red y no un catálogo.
+No cuenta follows ni visitas: cuenta personas que intentan conectar con otra. Es la señal de que `musikate` sirve como red y no como vidriera.
 
-**Métrica de volumen de apoyo:** total de acciones de esas tres categorías por semana (una persona puede aportar más de una).
+**Apoyo:** perfiles completos, avisos activos y follows.
 
 ## 2. Embudo de activación
 
-| Paso | Definición | Objetivo beta |
+| Paso | Definición | Objetivo alpha |
 | --- | --- | --- |
-| Instalación | Abre la app por primera vez | — |
-| Registro | Crea cuenta | ≥ 60 % de instalaciones |
-| Onboarding | Completa perfil (instrumentos, géneros, ciudad) | ≥ 80 % de registros |
-| Primer follow | Sigue al menos 1 cuenta | ≥ 70 % de onboardings |
-| Primera publicación | Publica cover, foto o texto | ≥ 40 % de quienes completaron onboarding |
-| Primera conexión | Envía o recibe un interés en aviso | ≥ 30 % de usuarios activos |
+| Lista de espera → instalación | Instala el build de alpha | ≥ 60 % de invitados |
+| Instalación → registro | Crea cuenta | ≥ 70 % |
+| Registro → onboarding | Completa perfil | ≥ 80 % |
+| Onboarding → primer follow | Sigue a 1+ perfil | ≥ 60 % |
+| Onboarding → primera conexión | Publica aviso o envía interés | ≥ 30 % |
+| D7 | Vuelve dentro de 7 días | ≥ 30 % |
 
-## 3. Retención y calidad
+## 3. Métricas de la alpha
 
-| Métrica | Definición | Objetivo beta |
+| Métrica | Definición | Objetivo |
 | --- | --- | --- |
-| D1 | Vuelve al día siguiente | ≥ 40 % |
-| D7 | Vuelve dentro de 7 días | ≥ 25 % |
-| D30 | Vuelve dentro de 30 días | ≥ 15 % |
-| Sesiones/semana | Aperturas por usuario activo | ≥ 3 |
-| Tiempo a primera respuesta | Desde aviso publicado hasta primer interés | < 48 h |
-| Avisos respondidos | % de avisos con ≥ 1 interés | ≥ 50 % |
-| Invitaciones | % de usuarios que comparte un link | ≥ 20 % |
+| Perfiles completos | Instrumentos + géneros + foto | ≥ 15 de 25 registrados |
+| Avisos publicados | Total en las primeras 2 semanas | ≥ 10 |
+| Avisos respondidos | % con ≥ 1 interés | ≥ 50 % |
+| Tiempo a primera respuesta | Desde publicación hasta primer interés | < 48 h |
+| Conexiones reales | Intercambios con contacto revelado | ≥ 5 |
+| Follows por usuario | Promedio | ≥ 3 |
+| Invitaciones | % que comparte un link | ≥ 20 % |
 
 ## 4. Métricas de guardia
-
-Estas no se optimizan: se vigilan. Si empeoran, se frena el lanzamiento.
 
 | Métrica | Umbral |
 | --- | --- |
 | Sesiones sin crash | ≥ 99,5 % |
-| Subidas exitosas | ≥ 95 % |
-| Reportes por 100 publicaciones | ≤ 5 |
+| Reportes por 100 avisos | ≤ 5 |
 | Bloqueos por 100 usuarios | ≤ 3 |
-| Tiempo de carga del feed (p90) | ≤ 2 s en 4G |
+| Carga de listas (p90) | ≤ 1,5 s en 4G |
 | Latencia de push | ≤ 30 s |
 
-## 5. Métricas de vanidad (ignorar)
+## 5. Eventos
 
-- Descargas totales.
-- Usuarios registrados sin actividad.
-- Impresiones y alcance.
-- Likes por publicación (sin contexto de retención).
+El listado completo está en el [PRD](01-prd-mvp.md#9-eventos-de-analítica). Reglas:
 
-Se pueden reportar, pero no guían decisiones.
-
-## 6. Eventos
-
-El listado completo está en el [PRD](01-prd-mvp.md#8-eventos-de-analítica). Reglas:
-
-- Un evento por acción de usuario, no por render.
-- Propiedades acotadas: tipo, origen, duración, tags. Nunca captions, mensajes ni emails.
+- Un evento por acción, no por render.
+- Propiedades acotadas: tipo, origen, cantidad de resultados.
+- Nunca descripciones de avisos, mensajes ni emails.
 - `distinct_id` estable por dispositivo; al registrarse se asocia a la cuenta.
-- Los eventos de embudo se validan en un tablero antes de la beta.
 
-## 7. Tablero semanal
+## 6. Tablero semanal
 
-Un solo tablero, revisado los lunes:
+Un solo tablero, revisado en el bloque semanal:
 
-1. CMS y volumen por tipo de acción.
-2. Embudo de activación de la semana.
-3. Retención por cohorte semanal.
+1. CMS y avisos/intereses de la semana.
+2. Embudo de activación.
+3. Retención D7 de la cohorte.
 4. Avisos: publicados, respondidos, tiempo a primera respuesta.
-5. Guardia: crashes, subidas fallidas, reportes.
-6. Top 5 publicaciones y top 5 avisos (para entender qué funciona).
+5. Guardia: crashes, reportes.
+6. Top 5 avisos y top 5 perfiles (para entender qué busca la escena).
 
-## 8. Experimentos de la beta
+## 7. Experimentos
 
-Con 30-50 usuarios no hay significancia estadística para A/B tests finos. Se usan comparaciones secuenciales y entrevistas.
+Con 20-30 usuarios no hay A/B tests finos. Se comparan secuencias y se entrevista.
 
 | # | Pregunta | Intervención | Cómo se lee |
 | --- | --- | --- | --- |
-| E1 | ¿El feed vacío mata la primera visita? | Sembrar 15 publicaciones antes de invitar vs invitar con feed vacío | Retención D1 y primera publicación. |
-| E2 | ¿Pedir intención en el onboarding mejora la activación? | Onboarding con "estoy buscando" vs sin ese paso | % que completa y % que publica aviso. |
-| E3 | ¿Un aviso destacado en el feed genera respuestas? | Insertar avisos en el feed vs solo en la pestaña | Intereses por aviso. |
-| E4 | ¿La invitación de un par convierte mejor? | Links personalizados de creadores vs invitación genérica | Registro y activación por canal. |
+| E1 | ¿El problema justifica una app? | 10 entrevistas en fase 0 | Cuántos describen el dolor sin que lo nombres. |
+| E2 | ¿Una app vacía mata la primera visita? | Sembrar 10 avisos y 15 perfiles antes de invitar | Activación y D7. |
+| E3 | ¿Pedir intención en el onboarding mejora la conexión? | Onboarding con "estoy buscando" vs sin ese paso | % que publica aviso o envía interés. |
+| E4 | ¿La gente vuelve por Novedades o por búsqueda? | Medir origen de la sesión | Sesiones por pestaña y D7. |
 
-## 9. Entrevistas
+## 8. Entrevistas
 
-- 8-10 entrevistas de 15 minutos en la semana 7.
-- Guion: qué hacían antes para resolver esto, qué les faltó, qué los haría volver, qué les dio vergüenza.
-- No preguntar "¿te gusta la app?". Preguntar por comportamiento pasado.
-- Registrar citas textuales; agrupar en temas; no confundir pedidos con necesidades.
+- 10 en fase 0, 8-10 en la alpha.
+- 15 minutos, preguntas sobre comportamiento pasado.
+- Guion: qué hacían antes para buscar banda/profesor/productor, qué les faltó, qué los haría volver, qué les dio vergüenza.
+- No preguntar "¿te gusta la app?". Preguntar qué hicieron con ella.
+- Registrar citas textuales y agrupar en temas.
 
-## 10. Puertas de decisión
+## 9. Puertas de decisión
 
-Al final de la semana 8:
+Al final de la fase 5 (mes 9-12):
 
 | Señal | Decisión |
 | --- | --- |
-| D7 ≥ 25 %, ≥ 50 % de avisos respondidos, ≥ 10 creadores activos | Lanzamiento público en febrero. |
-| Una métrica clave por debajo, pero tendencia positiva | Segunda beta de 4 semanas con foco en esa métrica. |
-| H1 y H2 fallan después de dos iteraciones | Replantear la propuesta: la red vertical no está resolviendo el problema. |
+| D7 ≥ 30 %, ≥ 50 % de avisos respondidos, ≥ 5 conexiones | Invertir en video (fase 6). |
+| Una métrica floja pero con tendencia positiva | Segunda alpha de 4-6 semanas con foco en esa métrica. |
+| Nadie publica ni responde después de dos iteraciones | Replantear la propuesta: la red de avisos no resuelve el problema. |
 
 La decisión se documenta en un ADR con los datos que la sustentan.

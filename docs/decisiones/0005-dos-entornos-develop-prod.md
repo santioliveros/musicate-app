@@ -27,7 +27,7 @@ Usar **dos entornos**:
 
 Reglas asociadas:
 
-- **No hay staging.** La beta cerrada corre en prod con un grupo chico; los cambios riesgosos se prueban antes en develop.
+- **No hay staging.** La alpha y la beta corren en prod con un grupo chico; los cambios riesgosos se prueban antes en develop.
 - **No hay ramas `develop` ni `prod`.** `main` es la única rama estable; los tags identifican lo publicado. Las ramas de trabajo son cortas (`feat/*`, `fix/*`).
 - EAS `preview` apunta a Supabase dev; EAS `production` apunta a Supabase prod.
 - Las migraciones se prueban en local y develop antes de aplicarse en prod.

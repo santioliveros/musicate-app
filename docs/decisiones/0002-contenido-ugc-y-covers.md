@@ -1,9 +1,9 @@
 # ADR-0002 — Contenido generado por usuarios y covers, sin streaming
 
-- **Estado**: aceptada
+- **Estado**: aceptada para fase 2 (no aplica al MVP)
 - **Fecha**: 18/10/2026
 - **Decisores**: fundador del proyecto
-- **Revisión**: antes del lanzamiento público, con asesoría legal
+- **Revisión**: antes de subir el primer cover
 
 ## Contexto
 
@@ -14,11 +14,11 @@ Esto deja dos caminos:
 1. Integrar metadata y previews de Spotify/Apple Music.
 2. Alojar contenido propio de los usuarios: covers en video corto, fotos y textos.
 
-La opción 1 reduce el riesgo de derechos, pero convierte a Musikate en una capa sobre otro servicio y limita la expresividad. La opción 2 da identidad propia, pero traslada el riesgo legal y de moderación a la plataforma.
+La opción 1 reduce el riesgo de derechos, pero convierte a musikate en una capa sobre otro servicio y limita la expresividad. La opción 2 da identidad propia, pero traslada el riesgo legal y de moderación a la plataforma.
 
 ## Decisión
 
-**No habrá streaming ni catálogo de canciones.** El contenido es generado por los usuarios: covers en video de hasta 60 segundos, fotos y crónicas. No se sube audio completo ni se reproduce música de terceros fuera de los covers.
+**No habrá streaming ni catálogo de canciones.** El contenido es generado por los usuarios: covers en video de hasta 60 segundos (fase 2). No se sube audio completo ni se reproduce música de terceros fuera de los covers.
 
 ## Alternativas consideradas
 
@@ -32,7 +32,7 @@ La opción 1 reduce el riesgo de derechos, pero convierte a Musikate en una capa
 ## Consecuencias
 
 ### Positivas
-- Identidad propia: el contenido vive en Musikate.
+- Identidad propia: el contenido vive en musikate.
 - El cover corto es un formato nativo, barato de producir y fácil de consumir.
 - No hay dependencia de APIs de terceros para el contenido central.
 - El modelo de datos es simple: un post con un archivo y metadatos.

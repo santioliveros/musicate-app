@@ -3,11 +3,13 @@
 - **Estado**: aceptada
 - **Fecha**: 18/10/2026
 - **Decisores**: fundador del proyecto
-- **Revisión**: al finalizar la beta
+- **Revisión**: al finalizar la alpha
+
+> **Nota:** la estimación de 8-12 semanas quedó obsoleta por [ADR-0006](0006-ruta-utilidad-first-y-mvp-sin-video.md). El stack sigue vigente; el MVP no incluye video.
 
 ## Contexto
 
-El MVP tiene que estar en iOS y Android en 8-12 semanas, construido por una sola persona con ayuda de IA. El equipo no está definido y el presupuesto es bajo. La app necesita autenticación, base de datos relacional, almacenamiento de imágenes y video, notificaciones push y reglas de acceso por usuario.
+El MVP tiene que estar en iOS y Android, construido por una sola persona con ayuda de IA, a un ritmo de 2-3 horas por semana. El presupuesto es bajo. La app necesita autenticación, base de datos relacional, almacenamiento de avatares, notificaciones push y reglas de acceso por usuario. El video llega en fase 2.
 
 Las alternativas eran:
 
@@ -24,10 +26,10 @@ Usar **React Native con Expo (TypeScript) y Supabase** como backend (Postgres, A
 
 | Alternativa | Por qué no se eligió |
 | --- | --- |
-| Flutter | Excelente rendimiento, pero el ecosistema y la disponibilidad de ayuda son menores para este equipo; el conocimiento previo es React. |
-| Nativo Swift + Kotlin | Duplica el esfuerzo y el tiempo; inviable para una persona en 8 semanas. |
+| Flutter | Excelente rendimiento, pero el ecosistema y la disponibilidad de ayuda son menores para este equipo; hay más material y comunidad en React. |
+| Nativo Swift + Kotlin | Duplica el esfuerzo y el tiempo; inviable para una persona sola. |
 | PWA | Sin push confiable en iOS y sin presencia en tiendas; la app es social y móvil. |
-| Firebase | Buena opción, pero el modelo relacional y RLS de Postgres encajan mejor con permisos por fila y consultas de feed. |
+| Firebase | Buena opción, pero el modelo relacional y RLS de Postgres encajan mejor con permisos por fila y consultas de avisos y novedades. |
 | Backend propio (NestJS + Postgres) | Más control, pero suma operación, despliegue y seguridad sin necesidad en el MVP. |
 
 ## Consecuencias
@@ -46,6 +48,6 @@ Usar **React Native con Expo (TypeScript) y Supabase** como backend (Postgres, A
 - Expo impone restricciones a módulos nativos; si aparece una necesidad muy específica, hay que hacer un dev build o expo prebuild.
 
 ### Seguimiento
-- Revisar en la semana 4 si el video funciona en Android de gama media.
-- Evaluar Supabase Pro al empezar la beta.
+- Revisar en fase 2 si el video funciona en Android de gama media.
+- Evaluar Supabase Pro al empezar la alpha.
 - Si el costo de video se dispara, evaluar Mux o Cloudflare Stream (ADR nuevo).

@@ -1,44 +1,50 @@
-# Musikate
+# musikate
 
 **La red social de la escena musical uruguaya.**
-Mostrá lo que hacés, encontrá con quién tocar y seguí a la gente que mueve la música en Montevideo.
+Mostrá quién sos, encontrá con quién tocar y seguí lo que pasa en Montevideo.
 
-> Estado: **v0.1 — fundaciones**. Todavía no hay código. Este repo contiene la visión, el alcance del MVP, la arquitectura, el roadmap y el backlog acordados para arrancar.
+> Estado: **documentación v0.2 — plan utilidad-first**. Todavía no hay código. El MVP arranca con perfiles y avisos; los covers verticales son fase 2.
 >
 > Repositorio: [santioliveros/musikate-app](https://github.com/santioliveros/musikate-app)
 
 ## El problema en una frase
 
-La escena musical de Montevideo ya existe, pero está dispersa: los covers viven en Instagram, las búsquedas de bandas en grupos de WhatsApp, los shows en flyers sueltos y las clases en el boca a boca. No hay un lugar donde mostrarse, encontrarse y seguir lo que pasa.
+La escena musical de Montevideo ya existe, pero está dispersa: las búsquedas de bandas viven en grupos de WhatsApp, los covers en Instagram, los shows en flyers sueltos y las clases en el boca a boca. No hay un lugar donde mostrarse, encontrarse y seguir lo que pasa.
 
 ## La apuesta
 
 Una red social vertical, local y de nicho:
 
-- **Mostrar**: covers en video corto, fotos y crónicas de shows.
-- **Encontrar**: avisos de "busco integrante", "busco banda", "busco productor", "doy clases".
-- **Seguir**: un feed de personas y proyectos de la escena, no de marcas.
+- **MVP:** perfil musical + avisos para encontrar integrantes, bandas, productores y clases + follows y novedades.
+- **Fase 2:** covers en video vertical, estilo TikTok/Reels.
+- **Fase 3:** shows, cursos, chat y perfil de banda.
 
-No es un servicio de streaming. No compite con Spotify: compite con la sensación de que la escena no tiene mapa.
+El orden es deliberado: con 2-3 horas por semana, construir primero el video sería invertir en lo más caro antes de saber si la escena usa la app. Primero la red, después el escaparate.
 
 ## Estado
 
 | Área | Estado |
 | --- | --- |
-| Visión y hipótesis | Documentada |
-| Alcance del MVP | Documentado |
+| Visión y alcance | Documentados |
 | Arquitectura y modelo de datos | Documentados |
 | Roadmap y backlog | Documentados |
-| Scaffold del repositorio | Próximo paso |
-| Beta cerrada (30 personas) | Semana 7 |
+| Validación con la escena | Próximo paso |
+| Scaffold del repositorio | Después de validar |
+| Alpha privada (20-30 personas) | Mes 8-12 |
+| Beta con video | Mes 15-18 |
 
 ## Stack
 
 - **App**: React Native + Expo (TypeScript, Expo Router)
 - **Backend**: Supabase (Postgres, Auth, Storage, Edge Functions)
-- **Entornos**: `develop` (interno) y `prod` (beta y tiendas), sin staging
+- **Entornos**: `develop` (interno) y `prod` (alpha y tiendas), sin staging
 - **Builds**: EAS Build / EAS Submit
 - **Analítica y errores**: PostHog + Sentry
+- **Video**: fase 2 (expo-video, expo-camera)
+
+## Ritmo
+
+2-3 horas por semana, un bloque fijo. El plan es por hitos, no por fechas: alpha en 8-12 meses, beta con video en 15-18. Si aparece más tiempo o ayuda, se acelera.
 
 ## Documentación
 
@@ -48,21 +54,22 @@ No es un servicio de streaming. No compite con Spotify: compite con la sensació
 | [PRD del MVP](docs/01-prd-mvp.md) | Qué se construye, con criterios de aceptación. |
 | [Arquitectura](docs/02-arquitectura.md) | Cómo se construye y por qué. |
 | [Modelo de datos](docs/03-modelo-de-datos.md) | Tablas, relaciones, RLS e índices. |
-| [Roadmap](docs/04-roadmap.md) | Plan de 8-12 semanas y fases posteriores. |
+| [Roadmap](docs/04-roadmap.md) | Fases, hitos y ritmo de trabajo. |
 | [Backlog](docs/05-backlog.md) | Historias priorizadas y estimaciones. |
 | [Métricas y experimentos](docs/06-metricas-experimentos.md) | Qué medimos y cómo validamos. |
-| [Riesgos y legal](docs/07-riesgos-legal.md) | Derechos, moderación, privacidad y tiendas. |
+| [Riesgos y legal](docs/07-riesgos-legal.md) | Datos, moderación, copyright y tiendas. |
 | [Monetización](docs/08-monetizacion.md) | Hipótesis de ingresos y su secuencia. |
 | [Setup y operación](docs/09-setup-operacion.md) | Cuentas, comandos, releases y costos. |
-| [Preguntas abiertas](docs/10-preguntas-abiertas.md) | Decisiones pendientes antes de codear. |
-| [Decisiones (ADR)](docs/decisiones/README.md) | Registro de decisiones arquitectónicas. |
+| [Preguntas abiertas](docs/10-preguntas-abiertas.md) | Decisiones pendientes. |
+| [Decisiones (ADR)](docs/decisiones/README.md) | Registro de decisiones. |
 
 ## Cómo trabajar en este repo
 
-Ver [CONTRIBUTING.md](CONTRIBUTING.md). En resumen: una tarea a la vez, decisiones en ADRs, commits convencionales y demo al final de cada semana.
+Ver [CONTRIBUTING.md](CONTRIBUTING.md). En resumen: un bloque de 2-3 h por semana, una historia a la vez, decisiones en ADRs y demo al final de cada fase.
 
 ## Próximos pasos
 
-1. Cerrar las [preguntas abiertas](docs/10-preguntas-abiertas.md) que bloquean el diseño.
-2. Crear el scaffold de Expo y el proyecto de Supabase ([setup](docs/09-setup-operacion.md)).
-3. Implementar la semana 1 del [roadmap](docs/04-roadmap.md).
+1. **Fase 0:** landing, waitlist, 10 entrevistas y 10 avisos semilla.
+2. **Fase 1:** scaffold de Expo + Supabase, auth y perfil.
+3. **Fase 2:** avisos, follows y notificaciones.
+4. **Alpha:** 20-30 personas, medición y decisión sobre video.
