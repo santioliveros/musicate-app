@@ -51,6 +51,7 @@ Copy-Item .env.example .env.local
 Completá `.env.local` con la URL y la `anon key` de Supabase. Después:
 
 ```powershell
+npm run check:setup
 npm start
 ```
 
@@ -130,6 +131,7 @@ La `service_role` **nunca** va en la app: solo en Edge Functions.
 | `npm run android` | Build y run en Android local. |
 | `npm run ios` | Build y run en iOS (requiere macOS). |
 | `npm run typecheck` | TypeScript sin emitir. |
+| `npm run check:setup` | Verifica `.env.local` y la conexión con Supabase. |
 | `npm run web` | Versión web de desarrollo. |
 
 Builds:

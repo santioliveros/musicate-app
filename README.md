@@ -47,6 +47,7 @@ El orden es deliberado: con 2-3 horas por semana, construir primero el video ser
 npm install
 Copy-Item .env.example .env.local
 # completá EXPO_PUBLIC_SUPABASE_URL y EXPO_PUBLIC_SUPABASE_ANON_KEY
+npm run check:setup
 npm start
 ```
 
