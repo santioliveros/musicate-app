@@ -36,6 +36,7 @@ No es un servicio de streaming. No compite con Spotify: compite con la sensació
 
 - **App**: React Native + Expo (TypeScript, Expo Router)
 - **Backend**: Supabase (Postgres, Auth, Storage, Edge Functions)
+- **Entornos**: `develop` (interno) y `prod` (beta y tiendas), sin staging
 - **Builds**: EAS Build / EAS Submit
 - **Analítica y errores**: PostHog + Sentry
 

@@ -21,6 +21,8 @@ La plantilla de ADR está en [docs/decisiones/README.md](docs/decisiones/README.
 ## 3. Git
 
 - Rama principal: `main`, siempre desplegable.
+- `main` alimenta el entorno **develop**; un tag `vX.Y.Z` alimenta **prod**.
+- No hay ramas `develop` ni `prod`: los entornos no son ramas.
 - Ramas cortas: `feat/perfil-musical`, `fix/upload-video`, `docs/roadmap`.
 - Commits convencionales: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`.
 - PRs chicos (menos de ~400 líneas cuando se pueda). Aunque seas una sola persona, abrí PR: te obliga a revisar el diff y deja historia.

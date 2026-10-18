@@ -185,16 +185,32 @@ La función nunca se llama desde el cliente. Los tokens se registran desde la ap
 
 ## 7. Entornos y despliegue
 
-| Entorno | App | Backend | Uso |
-| --- | --- | --- | --- |
-| Local | Expo dev build | Supabase local (Docker) o proyecto dev | Desarrollo diario |
-| Preview | EAS `preview` | Proyecto dev | Pruebas con testers |
-| Producción | EAS `production` | Proyecto prod | Beta y lanzamiento |
+Dos entornos: **develop** y **prod**. No hay staging separado: con una sola persona, un tercer entorno agrega costo y mantenimiento sin agregar una barrera real.
 
+| Entorno | Backend | Builds EAS | Quién lo usa | Se despliega desde |
+| --- | --- | --- | --- | --- |
+| develop | Supabase `musikate-dev` (o local) | `development` (dev client) y `preview` (testers) | Desarrollador y testers internos | `main`, automático |
+| prod | Supabase `musikate-prod` | `production` | Beta y usuarios finales | tag `vX.Y.Z`, manual |
+
+- **Local** no es un entorno: es la instancia local de develop (`supabase start` + dev client).
+- **develop** es el entorno de integración: todo lo que entra a `main` tiene que poder probarse ahí.
+- **prod** es el entorno de usuarios reales. La beta cerrada corre en prod con un grupo chico; si un cambio toca datos, se prueba en dev y se hace backup antes.
+- **No hay ramas `develop` ni `prod`.** `main` es la única rama estable; los tags marcan lo que se publica. Las ramas cortas (`feat/*`, `fix/*`) mueren al mergear.
+- EAS `preview` apunta a Supabase dev; EAS `production` apunta a Supabase prod. Nunca al revés.
+- Un release candidate se compila con `production` y se distribuye por TestFlight/Play Internal antes de publicarlo; recién cuando se aprueba se libera en la tienda.
 - Migraciones siempre por archivo (`supabase/migrations`), nunca cambios manuales en prod.
-- `main` se mantiene desplegable; los builds de producción salen de tags.
 - EAS Update solo para correcciones de JS; cambios nativos requieren build nuevo.
 - Región de Supabase: **São Paulo (sa-east-1)** por latencia desde Uruguay; si no está disponible en el plan, us-east-1.
+
+### Flujo de promoción
+
+```text
+feat/x ──PR──> main ──auto──> develop (Supabase dev + build preview)
+                  │
+                  └──tag v0.1.0──> prod (Supabase prod + build production)
+```
+
+Un cambio urgente en prod se arregla desde el tag: `release/0.1` → fix → `v0.1.1` → merge a `main`.
 
 ### CI mínimo (GitHub Actions)
 
@@ -229,7 +245,7 @@ jobs:
 | --- | --- | --- |
 | Apple Developer Program | US$ 99/año | Antes de TestFlight |
 | Google Play Console | US$ 25 único | Antes de Play Internal |
-| Supabase | Gratis en desarrollo; Pro ~US$ 25/mes | Al empezar la beta |
+| Supabase | Dev gratis; prod ~US$ 25/mes | Al empezar la beta |
 | EAS Build | Gratis con cola; plan pago opcional | Desde el primer build |
 | Dominio | US$ 12-20/año | Antes de la beta |
 | Sentry / PostHog | Planes gratuitos | Desde el inicio |

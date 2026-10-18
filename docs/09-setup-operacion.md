@@ -33,7 +33,7 @@
 | Apple Developer | US$ 99/año | Semana 1-2 |
 | Google Play | US$ 25 único | Semana 2 |
 | Dominio | US$ 12-20/año | Semana 2 |
-| Supabase Pro | ~US$ 25/mes | Al empezar la beta |
+| Supabase Pro (prod) | ~US$ 25/mes | Al empezar la beta; dev puede ir en free |
 | EAS | Gratis (cola) o US$ 99/mes | Opcional |
 | Total inicial | ~US$ 125-150 | — |
 | Total mensual beta | ~US$ 25-45 | — |
@@ -147,7 +147,14 @@ EXPO_PUBLIC_POSTHOG_KEY=...
 EXPO_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
 ```
 
-En EAS se configuran con `eas secret:create` o `eas.json` por perfil. La `service_role` **nunca** va en la app: solo en Edge Functions.
+Cada entorno tiene su propio juego de variables:
+
+| Entorno | Variables |
+| --- | --- |
+| develop | `.env.local` (local) y perfiles EAS `development`/`preview` (nube dev) |
+| prod | perfil EAS `production` |
+
+Se configuran con `eas env:create` o el bloque `env` de `eas.json`. La `service_role` **nunca** va en la app: solo en Edge Functions.
 
 ## 6. Scripts previstos
 
@@ -182,24 +189,28 @@ eas build --profile development --platform ios
 
 El build se instala en el dispositivo mediante un link; no hace falta Mac.
 
-### Preview y producción
+### Los dos entornos
 
-| Perfil | Uso | Distribución |
-| --- | --- | --- |
-| `development` | Desarrollo con dev client | Interna |
-| `preview` | Testers de la beta | TestFlight / Play Internal |
-| `production` | Lanzamiento | App Store / Play Store |
+| Entorno | Perfil EAS | Backend | Distribución | Origen |
+| --- | --- | --- | --- | --- |
+| develop | `development` o `preview` | Supabase dev | Interna / TestFlight / Play Internal | `main` |
+| prod | `production` | Supabase prod | App Store / Play Store | tag `vX.Y.Z` |
+
+`development` y `preview` son dos formas de usar el mismo entorno develop: dev client para tu teléfono, preview para testers. `production` es el único perfil que apunta a prod.
+
+Para probar un release candidate contra prod sin publicarlo: `eas build --profile production`, `eas submit` a TestFlight/Play Internal, y recién después liberar en la tienda.
 
 Checklist de release:
 
 - [ ] `version` y `buildNumber`/`versionCode` actualizados.
-- [ ] Variables de entorno del perfil correctas.
-- [ ] Migraciones aplicadas en producción.
+- [ ] Variables del perfil `production` correctas (Supabase prod).
+- [ ] Migraciones probadas en develop y aplicadas en prod.
+- [ ] Tag `vX.Y.Z` creado.
+- [ ] Build `production` generado desde el tag.
 - [ ] Smoke test en Android e iOS reales.
 - [ ] Analítica y Sentry activos.
 - [ ] Notas de versión escritas.
-- [ ] Tag en git (`v0.1.0`).
-- [ ] Build subido a TestFlight/Play y probado por 2 personas.
+- [ ] Build subido a TestFlight/Play Internal y probado por 2 personas.
 
 ## 8. Operación de la beta
 

@@ -111,7 +111,7 @@
 - Eliminar cuenta y datos.
 - Límites anti-abuso.
 - PostHog + Sentry; eventos del embudo verificados.
-- Builds en TestFlight y Play Internal Testing.
+- Builds de develop en TestFlight y Play Internal Testing.
 
 **Salida:** build instalable por testers externos, con push y reportes funcionando.
 
@@ -120,6 +120,7 @@
 **Objetivo:** 30 personas reales usando la app.
 
 - Invitar a 30-50 personas de la escena; onboarding asistido por videollamada o presencial.
+- La beta corre sobre **prod** (build `production`); backup de Supabase antes de invitar.
 - 10 creadores comprometidos con publicar al menos un cover.
 - Revisar reportes a diario y responder soporte.
 - Entrevistas de 15 minutos con 8-10 usuarios.

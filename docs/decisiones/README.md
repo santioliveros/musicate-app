@@ -10,6 +10,7 @@ Un ADR registra una decisión importante, el contexto en el que se tomó y sus c
 | [ADR-0002](0002-contenido-ugc-y-covers.md) | Contenido generado por usuarios y covers, sin streaming | Aceptada | 18/10/2026 |
 | [ADR-0003](0003-beachhead-montevideo.md) | Montevideo como mercado inicial | Aceptada | 18/10/2026 |
 | [ADR-0004](0004-alcance-del-mvp.md) | Alcance y recortes del MVP | Aceptada | 18/10/2026 |
+| [ADR-0005](0005-dos-entornos-develop-prod.md) | Dos entornos: develop y prod | Aceptada | 18/10/2026 |
 
 ## Cuándo escribir uno
 
