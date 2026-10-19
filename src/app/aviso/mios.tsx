@@ -118,7 +118,11 @@ function MyListingCard({
   const expired = new Date(listing.expires_at).getTime() < Date.now()
   const status = listing.status === 'closed' ? 'Cerrado' : expired ? 'Vencido' : 'Abierto'
   const statusColor =
-    status === 'Abierto' ? colors.primary : status === 'Vencido' ? colors.danger : colors.textMuted
+    status === 'Abierto'
+      ? colors.primaryText
+      : status === 'Vencido'
+        ? colors.danger
+        : colors.textMuted
 
   return (
     <View style={styles.card}>
@@ -216,7 +220,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   typeText: {
-    color: colors.primary,
+    color: colors.primaryText,
     fontSize: fontSize.xs,
     fontWeight: '700',
   },

@@ -410,7 +410,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   typeText: {
-    color: colors.primary,
+    color: colors.primaryText,
     fontSize: fontSize.xs,
     fontWeight: '800',
   },
@@ -530,7 +530,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   sectionCount: {
-    color: colors.primary,
+    color: colors.primaryText,
     fontSize: fontSize.sm,
     fontWeight: '800',
   },
@@ -570,7 +570,7 @@ const styles = StyleSheet.create({
     marginTop: spacing.xs,
   },
   interestContact: {
-    color: colors.primary,
+    color: colors.primaryText,
     fontSize: fontSize.xs,
     marginTop: spacing.xs,
   },

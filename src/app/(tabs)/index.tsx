@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xl,
   },
   eyebrow: {
-    color: colors.primary,
+    color: colors.primaryText,
     fontSize: fontSize.xs,
     fontWeight: '800',
     letterSpacing: 1.5,

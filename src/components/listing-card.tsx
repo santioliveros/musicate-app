@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   typeText: {
-    color: colors.primary,
+    color: colors.primaryText,
     fontSize: fontSize.xs,
     fontWeight: '700',
   },

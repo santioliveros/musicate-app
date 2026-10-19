@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.xs,
   },
   lookingFor: {
-    color: colors.primary,
+    color: colors.primaryText,
     fontSize: fontSize.xs,
     marginTop: 4,
   },
