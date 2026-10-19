@@ -29,7 +29,7 @@ El MVP tiene **21 historias** (19 P0 + 2 P1) y suma **≈ 50 semanas de trabajo*
 | E1 | Fundaciones | Repo, Supabase, Expo y auth. | Mes 1 |
 | E2 | Identidad | Perfil musical y búsqueda. | Mes 1-3 |
 | E3 | Avisos | Publicar, encontrar y responder. | Mes 3-5 |
-| E4 | Red | Follows y Novedades. | Mes 5-6 |
+| E4 | Red | Follows y Para ti. | Mes 5-6 |
 | E5 | Notificaciones | Push e historial. | Mes 6-7 |
 | E6 | Confianza | Reportar, bloquear y legal. | Mes 7-8 |
 | E7 | Alpha | 20-30 personas usando la app. | Mes 7-9 |
@@ -72,7 +72,7 @@ El MVP tiene **21 historias** (19 P0 + 2 P1) y suma **≈ 50 semanas de trabajo*
 
 | ID | Historia | Prioridad | Tamaño | Fase |
 | --- | --- | --- | --- | --- |
-| US-040 | Follows, listas y Novedades | P0 | M | Mes 5-6 |
+| US-040 | Follows, listas y Para ti | P0 | M | Mes 5-6 |
 | US-041 | Perfiles nuevos y sugerencias simples | P0 | S | Mes 6 |
 
 ### E5 · Notificaciones

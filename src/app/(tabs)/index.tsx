@@ -10,34 +10,34 @@ import { useAuth } from '@/features/auth/auth-context'
 import { AvisosContent } from '@/features/listings/avisos-content'
 import { colors, fontSize, radii, spacing } from '@/theme'
 
-type Segment = 'novedades' | 'avisos'
+type Segment = 'para-ti' | 'novedades'
 
 export default function InicioScreen() {
   const { profile } = useAuth()
-  const [segment, setSegment] = useState<Segment>('novedades')
+  const [segment, setSegment] = useState<Segment>('para-ti')
 
   return (
     <Screen>
       <PageHeader
         title="Inicio"
-        subtitle={profile ? `Hola, ${profile.display_name}.` : 'Novedades y avisos de la escena.'}
+        subtitle={profile ? `Hola, ${profile.display_name}.` : 'Para ti y novedades de la escena.'}
       />
 
       <View style={styles.segmented}>
+        <SegmentButton
+          label="Para ti"
+          active={segment === 'para-ti'}
+          onPress={() => setSegment('para-ti')}
+        />
         <SegmentButton
           label="Novedades"
           active={segment === 'novedades'}
           onPress={() => setSegment('novedades')}
         />
-        <SegmentButton
-          label="Avisos"
-          active={segment === 'avisos'}
-          onPress={() => setSegment('avisos')}
-        />
       </View>
 
-      {segment === 'novedades' ? (
-        <NovedadesContent onSeeAvisos={() => setSegment('avisos')} />
+      {segment === 'para-ti' ? (
+        <ParaTiContent onSeeNovedades={() => setSegment('novedades')} />
       ) : (
         <AvisosContent />
       )}
@@ -70,7 +70,7 @@ function SegmentButton({
   )
 }
 
-function NovedadesContent({ onSeeAvisos }: { onSeeAvisos: () => void }) {
+function ParaTiContent({ onSeeNovedades }: { onSeeNovedades: () => void }) {
   const router = useRouter()
 
   return (
@@ -83,7 +83,7 @@ function NovedadesContent({ onSeeAvisos }: { onSeeAvisos: () => void }) {
         </Text>
         <View style={styles.actions}>
           <Button label="Buscar gente" onPress={() => router.push('/(tabs)/buscar')} />
-          <Button label="Ver avisos" variant="secondary" onPress={onSeeAvisos} />
+          <Button label="Ver novedades" variant="secondary" onPress={onSeeNovedades} />
         </View>
       </View>
 

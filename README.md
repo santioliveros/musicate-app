@@ -15,7 +15,7 @@ La escena musical ya existe, pero está dispersa: las búsquedas de bandas viven
 
 Una red social vertical, de nicho:
 
-- **MVP:** perfil musical + avisos para encontrar integrantes, bandas, productores y clases + follows y novedades.
+- **MVP:** perfil musical + avisos para encontrar integrantes, bandas, productores y clases + follows y una sección Para ti.
 - **Fase 2:** covers en video vertical, estilo TikTok/Reels.
 - **Fase 3:** shows, cursos, chat y perfil de banda.
 
@@ -65,7 +65,7 @@ npm run typecheck
 ```text
 src/app/              Rutas de Expo Router
   (auth)/             login, código y onboarding
-  (tabs)/             Inicio (Novedades + Avisos), Buscar, Perfil
+  (tabs)/             Inicio (Para ti + Novedades), Buscar, Perfil
 src/components/       UI reutilizable
 src/features/         auth, profile
 src/lib/              Supabase y React Query

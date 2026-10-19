@@ -76,7 +76,7 @@ Con 20-30 usuarios no hay A/B tests finos. Se comparan secuencias y se entrevist
 | E1 | ¿El problema justifica una app? | 10 entrevistas en fase 0 | Cuántos describen el dolor sin que lo nombres. |
 | E2 | ¿Una app vacía mata la primera visita? | Sembrar 10 avisos y 15 perfiles antes de invitar | Activación y D7. |
 | E3 | ¿Pedir intención en el onboarding mejora la conexión? | Onboarding con "estoy buscando" vs sin ese paso | % que publica aviso o envía interés. |
-| E4 | ¿La gente vuelve por Novedades o por búsqueda? | Medir origen de la sesión | Sesiones por pestaña y D7. |
+| E4 | ¿La gente vuelve por Para ti o por búsqueda? | Medir origen de la sesión | Sesiones por pestaña y D7. |
 
 ## 8. Entrevistas
 

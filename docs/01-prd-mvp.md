@@ -32,7 +32,7 @@ Esto no cambia la visión: cambia el orden. Primero la red, después el escapara
 | Cuenta | Registro con email OTP; 18+; términos; sesión persistente | P0 |
 | Perfil | Identidad musical, instrumentos, géneros, "estoy buscando", links | P0 |
 | Avisos | Crear, listar, filtrar, responder, cerrar; contacto tras interés | P0 |
-| Red | Seguir/dejar de seguir; listas; "Novedades" con avisos de tu red | P0 |
+| Red | Seguir/dejar de seguir; listas; "Para ti" con avisos de tu red | P0 |
 | Búsqueda | Perfiles por nombre, usuario, instrumento y género; avisos por filtros | P0 |
 | Notificaciones | Push e in-app para follows e intereses | P0 |
 | Confianza | Reportar, bloquear, eliminar cuenta, normas | P0 |
@@ -89,7 +89,7 @@ Va a shows, escucha bandas nuevas y comparte hallazgos. No toca instrumentos. Qu
 4. Elige usuario, foto, instrumentos (1-3), géneros (1-3), ciudad y nivel.
 5. Indica qué busca (opcional): banda, integrantes, productor, clases, shows.
 6. Agrega links (Instagram, YouTube, Spotify, sitio) si quiere.
-7. Cae en "Novedades" con perfiles y avisos semilla.
+7. Cae en "Para ti" con perfiles y avisos semilla.
 
 **Fricción deliberada:** no se puede ver la app sin cuenta. Simplifica el MVP y permite medir activación.
 
@@ -110,12 +110,12 @@ Va a shows, escucha bandas nuevas y comparte hallazgos. No toca instrumentos. Qu
 5. El autor recibe una notificación y ve el perfil, el mensaje y el contacto de quien se interesó.
 6. La conversación sigue por WhatsApp, Instagram o email, fuera de la app.
 
-### 5.4 Seguir y ver novedades
+### 5.4 Seguir y ver "Para ti"
 
-1. En "Novedades" ve avisos de la gente que sigue y perfiles nuevos de Montevideo.
+1. En "Para ti" ve avisos de la gente que sigue y perfiles nuevos de Montevideo.
 2. Entra a un perfil, ve su identidad musical y sus avisos activos.
 3. Toca "Seguir".
-4. La próxima vez, sus avisos aparecen en "Novedades".
+4. La próxima vez, sus avisos aparecen en "Para ti".
 
 ## 6. Requisitos funcionales
 
@@ -190,11 +190,11 @@ Tipos: `busco_integrante`, `busco_banda`, `busco_productor`, `ofrezco_produccion
 - [ ] Un aviso cerrado no aparece en listados ni acepta intereses.
 - [ ] No se puede ver el contacto del autor sin enviar "me interesa".
 
-### RF-04 · Red y novedades (P0)
+### RF-04 · Red y Para ti (P0)
 
 - Seguir y dejar de seguir desde el perfil o el aviso.
 - Listas de seguidores y seguidos.
-- "Novedades" con dos secciones:
+- "Para ti" con dos secciones:
   - **Avisos de tu red:** avisos abiertos de perfiles seguidos.
   - **Perfiles nuevos:** altas recientes en Montevideo.
 - Cada aviso muestra tipo, instrumento, zona y autor.
@@ -300,14 +300,14 @@ Tipos: `busco_integrante`, `busco_banda`, `busco_productor`, `ofrezco_produccion
 | `listing_created` | Publica aviso | tipo |
 | `listing_viewed` | Abre aviso | tipo |
 | `listing_interest_sent` | Envía interés | tipo, tiene mensaje |
-| `novedades_viewed` | Abre Novedades | — |
+| `para_ti_viewed` | Abre Para ti | — |
 | `notification_opened` | Abre desde push | tipo |
 | `report_submitted` | Reporta | motivo, target |
 | `user_blocked` | Bloquea | origen |
 
 ## 10. Criterios de lanzamiento de la alpha
 
-- [ ] Los flujos de perfil, aviso y novedades funcionan en iOS y Android reales.
+- [ ] Los flujos de perfil, aviso y Para ti funcionan en iOS y Android reales.
 - [ ] RLS probado con dos cuentas.
 - [ ] Reportar y bloquear funcionan de punta a punta.
 - [ ] Términos, privacidad y normas publicados en URL.

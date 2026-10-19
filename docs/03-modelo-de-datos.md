@@ -156,7 +156,7 @@ create table follows (
 );
 ```
 
-En el MVP no hay posts: los follows sirven para ver los avisos de tu red en "Novedades".
+En el MVP no hay posts: los follows sirven para ver los avisos de tu red en "Para ti".
 
 ### 4.3 Avisos
 
