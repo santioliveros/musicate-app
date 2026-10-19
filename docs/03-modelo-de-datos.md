@@ -353,9 +353,9 @@ Los catálogos se cargan en la migración `0001_extensions_and_catalogs.sql` y s
 1. `0001_extensions_and_catalogs.sql`: extensiones (`citext`, `pg_trgm`), enum `skill_level`, `instruments`, `genres` y seed. **Hecha.**
 2. `0002_profiles.sql`: `profiles`, joins, trigger de alta, RLS e índices. **Hecha.**
 3. `0003_storage_avatars.sql`: bucket `avatars` y políticas. **Hecha.**
-4. `0004_listings.sql`: `listings`, `listing_contacts`, `listing_interests` y RLS. **Próxima.**
+4. `0004_listings.sql`: `listings`, `listing_contacts`, `listing_interests`, RLS y límites. **Hecha (código).**
 5. `0005_notifications_and_trust.sql`: `notifications`, `push_tokens`, `reports`, `blocks`, `is_blocked`.
-6. `0006_listings_triggers.sql`: contadores, notificaciones, límites, `pg_cron` y expiración de avisos.
+6. `0006_listings_triggers.sql`: notificaciones, `pg_cron` y expiración de avisos.
 
 Fase 2 agrega `0007_content.sql` con `posts`, `post_likes`, `comments` y `saved_posts`.
 

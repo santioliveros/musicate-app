@@ -40,9 +40,20 @@ select count(*) from public.genres;      -- 25
 select * from storage.buckets where id = 'avatars';
 ```
 
-## 5. Notas
+## 5. Seed de avisos (desarrollo)
+
+Después de completar el onboarding, ejecutá `seed_listings.sql` para crear 3 avisos de prueba:
+
+```sql
+-- pegá el contenido de seed_listings.sql en el SQL Editor
+```
+
+El seed usa el primer perfil y crea 3 avisos: busca baterista, ofrece clases y busca productor.
+
+## 6. Notas
 
 - `profiles` se crea automáticamente con un trigger cuando se registra un usuario.
 - El username provisional es `user_<12 caracteres>`; el onboarding lo reemplaza.
 - La alpha usa email OTP. Google y Apple se agregan en fase 2.
-- Los avisos (`listings`) se agregan en la migración 0004, cuando se construya ese módulo.
+- La migración 0004 crea `listings`, `listing_contacts` y `listing_interests`.
+- Las notificaciones y los reportes llegan en la migración 0005.

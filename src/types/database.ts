@@ -45,3 +45,39 @@ export type ProfileTaxonomy = {
   genreIds: number[]
   level: SkillLevel
 }
+
+export type ListingType =
+  | 'looking_for_member'
+  | 'looking_for_band'
+  | 'looking_for_producer'
+  | 'offering_production'
+  | 'offering_lessons'
+  | 'looking_for_lessons'
+
+export type ListingStatus = 'open' | 'closed' | 'expired'
+
+export type Listing = {
+  id: string
+  author_id: string
+  type: ListingType
+  title: string
+  description: string
+  instrument_id: number | null
+  genre_id: number | null
+  zone: string | null
+  band_name: string | null
+  status: ListingStatus
+  expires_at: string
+  created_at: string
+  updated_at: string
+  closed_at: string | null
+}
+
+export type ListingAuthor = Pick<
+  Profile,
+  'id' | 'username' | 'display_name' | 'avatar_path' | 'city'
+>
+
+export type ListingWithAuthor = Listing & {
+  author: ListingAuthor
+}

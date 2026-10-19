@@ -30,7 +30,8 @@ El orden es deliberado: con 2-3 horas por semana, construir primero el video ser
 | Perfil musical, avatar y taxonomía | Listo |
 | Búsqueda de perfiles | Básica |
 | Validación formal con la escena | Pendiente; ya hubo conversaciones informales |
-| Avisos | Próximo módulo |
+| Avisos: listado y detalle | Implementados; falta aplicar la migración `0004` |
+| Avisos: crear y responder | Próximo |
 | Alpha privada (20-30 personas) | Mes 8-12 |
 
 ## Stack
@@ -88,7 +89,7 @@ supabase/migrations/  Esquema, RLS y storage
 
 ## Próximos pasos
 
-1. Crear el proyecto Supabase dev y aplicar las migraciones.
-2. Probar registro, onboarding y perfil en un teléfono real.
-3. Construir el módulo de avisos (migración `0004` + pantallas).
+1. Aplicar la migración `0004` y el seed de avisos.
+2. Probar el listado con filtros y el detalle.
+3. Construir la creación de avisos y el flujo de “me interesa”.
 4. Sembrar 15 perfiles y 10 avisos para la alpha.

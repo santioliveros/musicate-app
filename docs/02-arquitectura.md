@@ -72,11 +72,13 @@ musikate/
 │   ├── app/                    # Rutas de Expo Router
 │   │   ├── (auth)/             # login, código, onboarding
 │   │   ├── (tabs)/             # novedades, avisos, buscar, perfil
+│   │   ├── aviso/[id].tsx      # detalle de aviso
 │   │   ├── index.tsx
 │   │   └── _layout.tsx
 │   ├── components/             # UI reutilizable
 │   ├── features/
 │   │   ├── auth/
+│   │   ├── listings/
 │   │   └── profile/
 │   ├── lib/                    # supabase y React Query
 │   ├── theme/                  # tokens, tipografía, espaciado
