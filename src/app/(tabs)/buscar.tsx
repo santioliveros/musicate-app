@@ -50,7 +50,7 @@ export default function BuscarScreen() {
           />
         ) : search.isPending ? (
           <View style={styles.loading}>
-            <ActivityIndicator color={colors.primary} />
+            <ActivityIndicator color={colors.primaryText} />
           </View>
         ) : search.isError ? (
           <EmptyState

@@ -64,7 +64,7 @@ export function AvisosContent() {
         onPress={() => setShowFilters((value) => !value)}
         style={({ pressed }) => [styles.filterToggle, pressed ? styles.pressed : null]}
       >
-        <Ionicons name="options-outline" size={18} color={colors.primary} />
+        <Ionicons name="options-outline" size={18} color={colors.primaryText} />
         <Text style={styles.filterToggleText}>
           Filtros{activeFilters > 0 ? ` (${activeFilters})` : ''}
         </Text>
@@ -155,7 +155,7 @@ export function AvisosContent() {
 
       {listings.isPending ? (
         <View style={styles.loading}>
-          <ActivityIndicator color={colors.primary} />
+          <ActivityIndicator color={colors.primaryText} />
         </View>
       ) : listings.isError ? (
         <EmptyState

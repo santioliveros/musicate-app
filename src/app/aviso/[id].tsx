@@ -180,7 +180,7 @@ export default function ListingDetailScreen() {
       {isOwner ? (
         <>
           <View style={styles.ownerNote}>
-            <Ionicons name="person-circle-outline" size={20} color={colors.primary} />
+            <Ionicons name="person-circle-outline" size={20} color={colors.primaryText} />
             <Text style={styles.ownerText}>Este aviso es tuyo.</Text>
           </View>
 
@@ -191,7 +191,7 @@ export default function ListingDetailScreen() {
             </View>
 
             {interests.isPending ? (
-              <ActivityIndicator color={colors.primary} style={styles.loading} />
+              <ActivityIndicator color={colors.primaryText} style={styles.loading} />
             ) : interests.isError ? (
               <Text style={styles.mutedText}>No pudimos cargar los interesados.</Text>
             ) : interests.data?.length === 0 ? (
@@ -206,7 +206,7 @@ export default function ListingDetailScreen() {
       ) : alreadyInterested ? (
         <>
           <View style={styles.successCard}>
-            <Ionicons name="checkmark-circle" size={20} color={colors.primary} />
+            <Ionicons name="checkmark-circle" size={20} color={colors.primaryText} />
             <Text style={styles.successText}>
               Ya enviaste tu interés. El autor puede contactarte.
             </Text>
@@ -265,7 +265,7 @@ export default function ListingDetailScreen() {
       ) : (
         <>
           <View style={styles.contactCard}>
-            <Ionicons name="lock-closed-outline" size={20} color={colors.primary} />
+            <Ionicons name="lock-closed-outline" size={20} color={colors.primaryText} />
             <View style={styles.contactCopy}>
               <Text style={styles.contactTitle}>Contacto privado</Text>
               <Text style={styles.contactText}>
@@ -306,7 +306,7 @@ function ContactCard({ contact }: { contact: ListingContact }) {
 
   return (
     <View style={styles.contactCard}>
-      <Ionicons name="call-outline" size={20} color={colors.primary} />
+      <Ionicons name="call-outline" size={20} color={colors.primaryText} />
       <View style={styles.contactCopy}>
         <Text style={styles.contactTitle}>Contacto del autor</Text>
         <Text style={styles.contactText}>
@@ -354,7 +354,7 @@ function InterestCard({ interest }: { interest: ListingInterestWithProfile }) {
       </View>
       {url ? (
         <Pressable onPress={() => void Linking.openURL(url)} style={styles.interestAction}>
-          <Ionicons name="open-outline" size={18} color={colors.primary} />
+          <Ionicons name="open-outline" size={18} color={colors.primaryText} />
         </Pressable>
       ) : null}
     </View>

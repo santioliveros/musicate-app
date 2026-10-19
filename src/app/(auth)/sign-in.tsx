@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     gap: spacing.xs,
   },
   logo: {
-    color: colors.primary,
+    color: colors.primaryText,
     fontSize: fontSize.xxl,
     fontWeight: '900',
     letterSpacing: -2,

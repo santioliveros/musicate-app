@@ -146,7 +146,7 @@ export default function PerfilScreen() {
                 onPress={() => openLink(link.url as string)}
                 style={({ pressed }) => [styles.linkRow, pressed ? styles.pressed : null]}
               >
-                <Ionicons name={link.icon} size={20} color={colors.primary} />
+                <Ionicons name={link.icon} size={20} color={colors.primaryText} />
                 <Text style={styles.linkLabel}>{link.label}</Text>
                 <Ionicons name="open-outline" size={16} color={colors.textMuted} />
               </Pressable>
