@@ -23,7 +23,7 @@ export function EmptyState({
   return (
     <View style={styles.card}>
       <View style={styles.iconWrap}>
-        <Ionicons name={icon} size={26} color={colors.primary} />
+        <Ionicons name={icon} size={26} color={colors.primaryText} />
       </View>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.description}>{description}</Text>
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xs,
   },
   title: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: fontSize.lg,
     fontWeight: '700',
     textAlign: 'center',

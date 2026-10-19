@@ -127,7 +127,7 @@ Métricas de apoyo en [Métricas y experimentos](06-metricas-experimentos.md).
 - **Tono:** cercano, de escena, sin corporativismo. Español rioplatense. Habla como un músico, no como un community manager.
 - **Tagline tentativa:** "tu música, tu gente". Alternativas: "la escena en tus manos", "donde la música se encuentra".
 - **Descripción pública:** "La red social para mostrar lo que hacés, encontrar con quién tocar y seguir a la gente de la escena." Sin mención de ciudad ni país.
-- **Estética:** oscura, contrastada, con acento vibrante; el contenido manda. Nada de degradados genéricos ni estética SaaS.
+- **Estética:** clara, con fondo `#FFECE4`, acento `#FFD082` y títulos en `#4A2E00`; el contenido manda. Nada de degradados genéricos ni estética SaaS.
 - **Logo y redes:** todavía no existen. Se crean después de la alpha, cuando haya una identidad que valga la pena comunicar.
 
 ## 13. Riesgos principales

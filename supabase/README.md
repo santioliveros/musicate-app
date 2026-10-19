@@ -15,7 +15,13 @@ npx supabase link --project-ref <project-ref>
 npx supabase db push
 ```
 
-O pegá el contenido de `migrations/*.sql` en el SQL Editor, en orden.
+O pegá el contenido de `migrations/*.sql` en el SQL Editor, en orden:
+
+1. `0001_extensions_and_catalogs.sql`
+2. `0002_profiles.sql`
+3. `0003_storage_avatars.sql`
+4. `0004_listings.sql`
+5. `0005_listing_functions.sql`
 
 ## 3. Configurar Auth
 
@@ -40,9 +46,21 @@ select count(*) from public.genres;      -- 25
 select * from storage.buckets where id = 'avatars';
 ```
 
-## 5. Notas
+## 5. Seed de avisos (desarrollo)
+
+Después de completar el onboarding, ejecutá `seed_listings.sql` para crear 3 avisos de prueba:
+
+```sql
+-- pegá el contenido de seed_listings.sql en el SQL Editor
+```
+
+El seed usa el primer perfil y crea 3 avisos: busca baterista, ofrece clases y busca productor.
+
+## 6. Notas
 
 - `profiles` se crea automáticamente con un trigger cuando se registra un usuario.
 - El username provisional es `user_<12 caracteres>`; el onboarding lo reemplaza.
 - La alpha usa email OTP. Google y Apple se agregan en fase 2.
-- Los avisos (`listings`) se agregan en la migración 0004, cuando se construya ese módulo.
+- La migración 0004 crea `listings`, `listing_contacts` y `listing_interests`.
+- La migración 0005 crea `create_listing` y `close_listing`.
+- Las notificaciones y los reportes llegan en la migración 0006.

@@ -22,7 +22,7 @@
 | 0 · Validación | Mes 0 | 10 entrevistas, 20 interesados, 5 comprometidos. |
 | 1 · Fundaciones e identidad | Mes 1-3 | Login y perfil funcionando en un dispositivo real. |
 | 2 · Avisos | Mes 3-5 | Primer aviso publicado y respondido. |
-| 3 · Red y notificaciones | Mes 5-7 | Follows, Novedades y push funcionando. |
+| 3 · Red y notificaciones | Mes 5-7 | Follows, Para ti y push funcionando. |
 | 4 · Confianza y alpha | Mes 7-9 | Build instalable y 20-30 personas usando la app. |
 | 5 · Iteración | Mes 9-12 | Aprendizajes, correcciones y decisión sobre video. |
 | 6 · Covers verticales | Mes 12-18 | Beta con video vertical y feed. |
@@ -38,7 +38,7 @@ Si arrancás en octubre de 2026, la alpha cae entre junio y octubre de 2027, y l
 | M0 · Demanda validada | Mes 0 | 10 entrevistas y 20 personas en lista de espera. |
 | M1 · Esqueleto | Mes 3 | Dos cuentas se registran, completan perfil y se ven. |
 | M2 · Primer aviso | Mes 5 | Un aviso se publica, se filtra y recibe un interés. |
-| M3 · Primera red | Mes 7 | Seguir a alguien hace aparecer sus avisos en Novedades. |
+| M3 · Primera red | Mes 7 | Seguir a alguien hace aparecer sus avisos en Para ti. |
 | M4 · Alpha | Mes 8-12 | 20-30 personas usan la app durante 2 semanas. |
 | M5 · Decisión | Mes 12-14 | Go/no-go a video según métricas y entrevistas. |
 | M6 · Beta con video | Mes 15-18 | Covers verticales y feed funcionando con 50-100 personas. |
@@ -88,12 +88,12 @@ No se escribe código. Se prueba si el problema existe y si la gente se suma.
 ### Fase 3 · Mes 5-7 · Red y notificaciones
 
 - Seguir/dejar de seguir y listas.
-- "Novedades": avisos de tu red y perfiles nuevos.
+- "Para ti": avisos de tu red y perfiles nuevos.
 - Push con Expo y Edge Function.
 - Historial in-app y deep links.
 - Preferencia on/off.
 
-**Salida:** seguir a alguien hace que sus avisos aparezcan en Novedades; la push llega con la app cerrada.
+**Salida:** seguir a alguien hace que sus avisos aparezcan en Para ti; la push llega con la app cerrada.
 
 ### Fase 4 · Mes 7-9 · Confianza y alpha
 
@@ -112,7 +112,7 @@ No se escribe código. Se prueba si el problema existe y si la gente se suma.
 
 - Entrevistas con 8-10 usuarios de la alpha.
 - Corregir fricción de onboarding y avisos.
-- Mejorar "Novedades" y búsqueda.
+- Mejorar "Para ti" y búsqueda.
 - Medir retención, avisos respondidos y conexiones.
 - Decidir si el video es la siguiente inversión o si hay que ajustar la propuesta.
 

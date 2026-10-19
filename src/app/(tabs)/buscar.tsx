@@ -50,7 +50,7 @@ export default function BuscarScreen() {
           />
         ) : search.isPending ? (
           <View style={styles.loading}>
-            <ActivityIndicator color={colors.primary} />
+            <ActivityIndicator color={colors.primaryText} />
           </View>
         ) : search.isError ? (
           <EmptyState
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.xs,
   },
   lookingFor: {
-    color: colors.primary,
+    color: colors.primaryText,
     fontSize: fontSize.xs,
     marginTop: 4,
   },

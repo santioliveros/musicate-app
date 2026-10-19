@@ -71,12 +71,16 @@ musikate/
 ├── src/
 │   ├── app/                    # Rutas de Expo Router
 │   │   ├── (auth)/             # login, código, onboarding
-│   │   ├── (tabs)/             # novedades, avisos, buscar, perfil
+│   │   ├── (tabs)/             # inicio (para ti + novedades), buscar, perfil
+│   │   ├── aviso/[id].tsx      # detalle de aviso
+│   │   ├── aviso/nuevo.tsx     # publicar aviso
+│   │   ├── aviso/mios.tsx      # mis avisos
 │   │   ├── index.tsx
 │   │   └── _layout.tsx
 │   ├── components/             # UI reutilizable
 │   ├── features/
 │   │   ├── auth/
+│   │   ├── listings/
 │   │   └── profile/
 │   ├── lib/                    # supabase y React Query
 │   ├── theme/                  # tokens, tipografía, espaciado
@@ -102,8 +106,9 @@ Las rutas de detalle de aviso y perfil público se agregan cuando exista el mód
 
 - `(auth)`: bienvenida, login, verificación por código, onboarding.
 - `(tabs)`:
-  - **Novedades**: avisos de tu red y perfiles nuevos.
-  - **Avisos**: listado con filtros.
+  - **Inicio**: una sola pestaña con dos secciones:
+    - **Para ti**: avisos de tu red y perfiles nuevos.
+    - **Novedades**: listado de avisos con filtros, publicación y “mis avisos”.
   - **Buscar**: perfiles y avisos.
   - **Perfil**: propio, con edición y ajustes.
 - Stack para detalle de perfil, detalle de aviso, creación de aviso y reportes.
@@ -111,8 +116,8 @@ Las rutas de detalle de aviso y perfil público se agregan cuando exista el mód
 
 ### 5.2 Estado
 
-- **Servidor**: TanStack Query. Claves por entidad (`listings.list`, `profiles.byUsername`, `novedades`).
-- **Sesión**: contexto de Supabase Auth; tokens en SecureStore.
+- **Servidor**: TanStack Query. Claves por entidad (`listings.list`, `profiles.byUsername`, `para-ti`).
+- **Sesión**: contexto de Supabase Auth; tokens en AsyncStorage.
 - **UI local**: estado de componente; Zustand solo si aparece estado global real.
 
 ### 5.3 Avatares
@@ -127,7 +132,7 @@ Flujo de subida:
 
 Bucket público de lectura con nombre fijo por usuario; escritura restringida a la carpeta del usuario. Sin video en el MVP.
 
-### 5.4 Novedades
+### 5.4 Para ti
 
 Consulta de avisos de la red:
 
@@ -159,7 +164,7 @@ order by created_at desc
 limit 20;
 ```
 
-No hay feed de publicaciones en el MVP. "Novedades" es una pantalla con dos secciones, no un algoritmo.
+No hay feed de publicaciones en el MVP. "Para ti" es una sección con dos bloques, no un algoritmo.
 
 ### 5.5 Búsqueda
 

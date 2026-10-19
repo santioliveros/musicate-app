@@ -156,7 +156,7 @@ create table follows (
 );
 ```
 
-En el MVP no hay posts: los follows sirven para ver los avisos de tu red en "Novedades".
+En el MVP no hay posts: los follows sirven para ver los avisos de tu red en "Para ti".
 
 ### 4.3 Avisos
 
@@ -353,11 +353,12 @@ Los catálogos se cargan en la migración `0001_extensions_and_catalogs.sql` y s
 1. `0001_extensions_and_catalogs.sql`: extensiones (`citext`, `pg_trgm`), enum `skill_level`, `instruments`, `genres` y seed. **Hecha.**
 2. `0002_profiles.sql`: `profiles`, joins, trigger de alta, RLS e índices. **Hecha.**
 3. `0003_storage_avatars.sql`: bucket `avatars` y políticas. **Hecha.**
-4. `0004_listings.sql`: `listings`, `listing_contacts`, `listing_interests` y RLS. **Próxima.**
-5. `0005_notifications_and_trust.sql`: `notifications`, `push_tokens`, `reports`, `blocks`, `is_blocked`.
-6. `0006_listings_triggers.sql`: contadores, notificaciones, límites, `pg_cron` y expiración de avisos.
+4. `0004_listings.sql`: `listings`, `listing_contacts`, `listing_interests`, RLS y límites. **Hecha (código).**
+5. `0005_listing_functions.sql`: `create_listing` y `close_listing`. **Hecha (código).**
+6. `0006_notifications_and_trust.sql`: `notifications`, `push_tokens`, `reports`, `blocks`, `is_blocked`.
+7. `0007_listing_notifications.sql`: notificaciones de interés, `pg_cron` y expiración de avisos.
 
-Fase 2 agrega `0007_content.sql` con `posts`, `post_likes`, `comments` y `saved_posts`.
+Fase 2 agrega `0008_content.sql` con `posts`, `post_likes`, `comments` y `saved_posts`.
 
 Reglas: migraciones inmutables una vez aplicadas en producción; cambios con una migración nueva; `supabase db diff` para verificar que el esquema remoto coincide.
 

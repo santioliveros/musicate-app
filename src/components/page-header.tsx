@@ -34,14 +34,15 @@ const styles = StyleSheet.create({
     gap: spacing.xs,
   },
   title: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: fontSize.xxl,
     fontWeight: '800',
     letterSpacing: -1,
   },
   subtitle: {
-    color: colors.textMuted,
+    color: colors.heading,
     fontSize: fontSize.sm,
     lineHeight: 20,
+    opacity: 0.75,
   },
 })
