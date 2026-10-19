@@ -160,23 +160,24 @@ const styles = StyleSheet.create({
     letterSpacing: 1.5,
   },
   heroTitle: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: 28,
     fontWeight: '800',
     letterSpacing: -0.8,
   },
   heroText: {
-    color: colors.textMuted,
+    color: colors.heading,
     fontSize: fontSize.sm,
     lineHeight: 20,
     marginBottom: spacing.sm,
+    opacity: 0.75,
   },
   actions: {
     gap: spacing.sm,
     marginTop: spacing.sm,
   },
   sectionTitle: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: fontSize.lg,
     fontWeight: '800',
     marginBottom: spacing.md,

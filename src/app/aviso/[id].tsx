@@ -394,7 +394,7 @@ const styles = StyleSheet.create({
     opacity: 0.7,
   },
   headerTitle: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: fontSize.md,
     fontWeight: '700',
   },
@@ -415,16 +415,17 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   title: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: 30,
     fontWeight: '800',
     letterSpacing: -0.8,
     lineHeight: 36,
   },
   subtitle: {
-    color: colors.textMuted,
+    color: colors.heading,
     fontSize: fontSize.sm,
     marginTop: spacing.sm,
+    opacity: 0.75,
   },
   tags: {
     flexDirection: 'row',
@@ -525,7 +526,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   sectionTitle: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: fontSize.lg,
     fontWeight: '800',
   },
@@ -598,7 +599,7 @@ const styles = StyleSheet.create({
     gap: 3,
   },
   contactTitle: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: fontSize.sm,
     fontWeight: '700',
   },
@@ -638,7 +639,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
   },
   formTitle: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: fontSize.lg,
     fontWeight: '800',
   },

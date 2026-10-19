@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xs,
   },
   title: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: fontSize.lg,
     fontWeight: '700',
     textAlign: 'center',

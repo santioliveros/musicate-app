@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   listTitle: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: fontSize.md,
     fontWeight: '800',
   },

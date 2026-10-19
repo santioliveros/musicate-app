@@ -532,15 +532,16 @@ const styles = StyleSheet.create({
     letterSpacing: 1.5,
   },
   title: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: 32,
     fontWeight: '800',
     letterSpacing: -1,
   },
   subtitle: {
-    color: colors.textMuted,
+    color: colors.heading,
     fontSize: fontSize.sm,
     lineHeight: 20,
+    opacity: 0.75,
   },
   avatarRow: {
     flexDirection: 'row',
@@ -558,7 +559,7 @@ const styles = StyleSheet.create({
     gap: spacing.xs,
   },
   avatarTitle: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: fontSize.md,
     fontWeight: '700',
   },
@@ -575,7 +576,7 @@ const styles = StyleSheet.create({
     gap: spacing.xs,
   },
   sectionTitle: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: fontSize.lg,
     fontWeight: '800',
   },

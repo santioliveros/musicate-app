@@ -106,15 +106,16 @@ const styles = StyleSheet.create({
     paddingBottom: spacing.xl,
   },
   title: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: 34,
     fontWeight: '800',
     letterSpacing: -1,
   },
   subtitle: {
-    color: colors.textMuted,
+    color: colors.heading,
     fontSize: fontSize.md,
     lineHeight: 23,
+    opacity: 0.75,
   },
   terms: {
     color: colors.textMuted,

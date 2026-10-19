@@ -400,14 +400,15 @@ const styles = StyleSheet.create({
     gap: 2,
   },
   headerTitle: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: fontSize.xl,
     fontWeight: '800',
     letterSpacing: -0.8,
   },
   headerSubtitle: {
-    color: colors.textMuted,
+    color: colors.heading,
     fontSize: fontSize.xs,
+    opacity: 0.75,
   },
   section: {
     gap: spacing.md,
@@ -417,7 +418,7 @@ const styles = StyleSheet.create({
     gap: spacing.xs,
   },
   sectionTitle: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: fontSize.lg,
     fontWeight: '800',
   },

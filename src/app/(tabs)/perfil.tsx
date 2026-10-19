@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
     marginTop: spacing.xl,
   },
   sectionTitle: {
-    color: colors.text,
+    color: colors.heading,
     fontSize: fontSize.md,
     fontWeight: '800',
   },
