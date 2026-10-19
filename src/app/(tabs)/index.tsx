@@ -24,7 +24,7 @@ export default function InicioScreen() {
         subtitle={profile ? `Hola, ${profile.display_name}.` : 'Para ti y novedades de la escena.'}
         right={
           <Image
-            source={require('../../../assets/images/musikate-logo.png')}
+            source={require('../../../assets/images/musikate-logo-v2.png')}
             style={styles.logo}
             contentFit="contain"
             accessibilityLabel="musikate"
