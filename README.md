@@ -65,7 +65,7 @@ npm run typecheck
 ```text
 src/app/              Rutas de Expo Router
   (auth)/             login, código y onboarding
-  (tabs)/             Novedades, Avisos, Buscar, Perfil
+  (tabs)/             Inicio (Novedades + Avisos), Buscar, Perfil
 src/components/       UI reutilizable
 src/features/         auth, profile
 src/lib/              Supabase y React Query

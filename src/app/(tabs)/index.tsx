@@ -1,24 +1,80 @@
 import { useRouter } from 'expo-router'
-import { StyleSheet, Text, View } from 'react-native'
+import { useState } from 'react'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 
 import { Button } from '@/components/button'
 import { EmptyState } from '@/components/empty-state'
 import { PageHeader } from '@/components/page-header'
 import { Screen } from '@/components/screen'
 import { useAuth } from '@/features/auth/auth-context'
+import { AvisosContent } from '@/features/listings/avisos-content'
 import { colors, fontSize, radii, spacing } from '@/theme'
 
-export default function NovedadesScreen() {
-  const router = useRouter()
+type Segment = 'novedades' | 'avisos'
+
+export default function InicioScreen() {
   const { profile } = useAuth()
+  const [segment, setSegment] = useState<Segment>('novedades')
 
   return (
     <Screen>
       <PageHeader
-        title="Novedades"
-        subtitle={profile ? `Hola, ${profile.display_name}.` : 'Avisos de tu red y gente nueva.'}
+        title="Inicio"
+        subtitle={profile ? `Hola, ${profile.display_name}.` : 'Novedades y avisos de la escena.'}
       />
 
+      <View style={styles.segmented}>
+        <SegmentButton
+          label="Novedades"
+          active={segment === 'novedades'}
+          onPress={() => setSegment('novedades')}
+        />
+        <SegmentButton
+          label="Avisos"
+          active={segment === 'avisos'}
+          onPress={() => setSegment('avisos')}
+        />
+      </View>
+
+      {segment === 'novedades' ? (
+        <NovedadesContent onSeeAvisos={() => setSegment('avisos')} />
+      ) : (
+        <AvisosContent />
+      )}
+    </Screen>
+  )
+}
+
+function SegmentButton({
+  label,
+  active,
+  onPress,
+}: {
+  label: string
+  active: boolean
+  onPress: () => void
+}) {
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.segment,
+        active ? styles.segmentActive : null,
+        pressed ? styles.pressed : null,
+      ]}
+    >
+      <Text style={[styles.segmentLabel, active ? styles.segmentLabelActive : null]}>
+        {label}
+      </Text>
+    </Pressable>
+  )
+}
+
+function NovedadesContent({ onSeeAvisos }: { onSeeAvisos: () => void }) {
+  const router = useRouter()
+
+  return (
+    <>
       <View style={styles.hero}>
         <Text style={styles.eyebrow}>TU RED</Text>
         <Text style={styles.heroTitle}>Encontrá con quién tocar.</Text>
@@ -27,11 +83,7 @@ export default function NovedadesScreen() {
         </Text>
         <View style={styles.actions}>
           <Button label="Buscar gente" onPress={() => router.push('/(tabs)/buscar')} />
-          <Button
-            label="Ver avisos"
-            variant="secondary"
-            onPress={() => router.push('/(tabs)/avisos')}
-          />
+          <Button label="Ver avisos" variant="secondary" onPress={onSeeAvisos} />
         </View>
       </View>
 
@@ -43,11 +95,42 @@ export default function NovedadesScreen() {
         actionLabel="Buscar gente"
         onAction={() => router.push('/(tabs)/buscar')}
       />
-    </Screen>
+    </>
   )
 }
 
 const styles = StyleSheet.create({
+  segmented: {
+    flexDirection: 'row',
+    padding: 4,
+    borderRadius: radii.pill,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surface,
+    marginBottom: spacing.xl,
+    gap: 4,
+  },
+  segment: {
+    flex: 1,
+    minHeight: 40,
+    borderRadius: radii.pill,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  segmentActive: {
+    backgroundColor: colors.primary,
+  },
+  pressed: {
+    opacity: 0.8,
+  },
+  segmentLabel: {
+    color: colors.textMuted,
+    fontSize: fontSize.sm,
+    fontWeight: '700',
+  },
+  segmentLabelActive: {
+    color: colors.onPrimary,
+  },
   hero: {
     borderRadius: radii.lg,
     borderWidth: 1,

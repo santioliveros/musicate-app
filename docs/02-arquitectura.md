@@ -71,7 +71,7 @@ musikate/
 ├── src/
 │   ├── app/                    # Rutas de Expo Router
 │   │   ├── (auth)/             # login, código, onboarding
-│   │   ├── (tabs)/             # novedades, avisos, buscar, perfil
+│   │   ├── (tabs)/             # inicio (novedades + avisos), buscar, perfil
 │   │   ├── aviso/[id].tsx      # detalle de aviso
 │   │   ├── aviso/nuevo.tsx     # publicar aviso
 │   │   ├── aviso/mios.tsx      # mis avisos
@@ -106,8 +106,9 @@ Las rutas de detalle de aviso y perfil público se agregan cuando exista el mód
 
 - `(auth)`: bienvenida, login, verificación por código, onboarding.
 - `(tabs)`:
-  - **Novedades**: avisos de tu red y perfiles nuevos.
-  - **Avisos**: listado con filtros.
+  - **Inicio**: una sola pestaña con dos secciones:
+    - **Novedades**: avisos de tu red y perfiles nuevos.
+    - **Avisos**: listado con filtros, publicación y “mis avisos”.
   - **Buscar**: perfiles y avisos.
   - **Perfil**: propio, con edición y ajustes.
 - Stack para detalle de perfil, detalle de aviso, creación de aviso y reportes.
@@ -116,7 +117,7 @@ Las rutas de detalle de aviso y perfil público se agregan cuando exista el mód
 ### 5.2 Estado
 
 - **Servidor**: TanStack Query. Claves por entidad (`listings.list`, `profiles.byUsername`, `novedades`).
-- **Sesión**: contexto de Supabase Auth; tokens en SecureStore.
+- **Sesión**: contexto de Supabase Auth; tokens en AsyncStorage.
 - **UI local**: estado de componente; Zustand solo si aparece estado global real.
 
 ### 5.3 Avatares

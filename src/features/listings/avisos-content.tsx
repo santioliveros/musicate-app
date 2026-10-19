@@ -7,8 +7,6 @@ import { Button } from '@/components/button'
 import { Chip } from '@/components/chip'
 import { EmptyState } from '@/components/empty-state'
 import { ListingCard } from '@/components/listing-card'
-import { PageHeader } from '@/components/page-header'
-import { Screen } from '@/components/screen'
 import { TextField } from '@/components/text-field'
 import { useAuth } from '@/features/auth/auth-context'
 import { useListings } from '@/features/listings/api'
@@ -17,7 +15,7 @@ import { useCatalog } from '@/features/profile/catalog'
 import { colors, fontSize, radii, spacing } from '@/theme'
 import type { ListingType } from '@/types/database'
 
-export default function AvisosScreen() {
+export function AvisosContent() {
   const router = useRouter()
   const { profile } = useAuth()
   const catalog = useCatalog()
@@ -47,12 +45,7 @@ export default function AvisosScreen() {
     catalog.data?.genres.find((genre) => genre.id === id)?.name
 
   return (
-    <Screen>
-      <PageHeader
-        title="Avisos"
-        subtitle="Encontrá gente para tocar, producir o aprender."
-      />
-
+    <>
       <View style={styles.actions}>
         <Button
           label="Publicar aviso"
@@ -198,7 +191,7 @@ export default function AvisosScreen() {
           ))}
         </View>
       )}
-    </Screen>
+    </>
   )
 }
 

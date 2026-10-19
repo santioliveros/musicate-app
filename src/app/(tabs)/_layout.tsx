@@ -1,4 +1,4 @@
-﻿import { Ionicons } from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons'
 import { Redirect, Tabs } from 'expo-router'
 
 import { LoadingView } from '@/components/loading-view'
@@ -32,18 +32,9 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Novedades',
+          title: 'Inicio',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="sparkles-outline" size={size} color={color as string} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="avisos"
-        options={{
-          title: 'Avisos',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="megaphone-outline" size={size} color={color as string} />
+            <Ionicons name="home-outline" size={size} color={color as string} />
           ),
         }}
       />
