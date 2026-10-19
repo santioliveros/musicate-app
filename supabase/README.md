@@ -15,7 +15,13 @@ npx supabase link --project-ref <project-ref>
 npx supabase db push
 ```
 
-O pegá el contenido de `migrations/*.sql` en el SQL Editor, en orden.
+O pegá el contenido de `migrations/*.sql` en el SQL Editor, en orden:
+
+1. `0001_extensions_and_catalogs.sql`
+2. `0002_profiles.sql`
+3. `0003_storage_avatars.sql`
+4. `0004_listings.sql`
+5. `0005_listing_functions.sql`
 
 ## 3. Configurar Auth
 
@@ -56,4 +62,5 @@ El seed usa el primer perfil y crea 3 avisos: busca baterista, ofrece clases y b
 - El username provisional es `user_<12 caracteres>`; el onboarding lo reemplaza.
 - La alpha usa email OTP. Google y Apple se agregan en fase 2.
 - La migración 0004 crea `listings`, `listing_contacts` y `listing_interests`.
-- Las notificaciones y los reportes llegan en la migración 0005.
+- La migración 0005 crea `create_listing` y `close_listing`.
+- Las notificaciones y los reportes llegan en la migración 0006.

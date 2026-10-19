@@ -30,8 +30,10 @@ El orden es deliberado: con 2-3 horas por semana, construir primero el video ser
 | Perfil musical, avatar y taxonomía | Listo |
 | Búsqueda de perfiles | Básica |
 | Validación formal con la escena | Pendiente; ya hubo conversaciones informales |
-| Avisos: listado y detalle | Implementados; falta aplicar la migración `0004` |
-| Avisos: crear y responder | Próximo |
+| Avisos: listado y detalle | Implementados; falta aplicar `0004` y `0005` |
+| Avisos: publicar, mis avisos y cerrar | Implementados; falta aplicar `0004` y `0005` |
+| Avisos: interés y contacto | Implementados; falta aplicar `0004` y `0005` |
+| Notificaciones push | Próximo |
 | Alpha privada (20-30 personas) | Mes 8-12 |
 
 ## Stack
@@ -89,7 +91,7 @@ supabase/migrations/  Esquema, RLS y storage
 
 ## Próximos pasos
 
-1. Aplicar la migración `0004` y el seed de avisos.
-2. Probar el listado con filtros y el detalle.
-3. Construir la creación de avisos y el flujo de “me interesa”.
-4. Sembrar 15 perfiles y 10 avisos para la alpha.
+1. Aplicar las migraciones `0004` y `0005`.
+2. Ejecutar el seed de avisos.
+3. Probar publicar, “mis avisos”, cerrar, “me interesa” y contacto revelado.
+4. Agregar notificaciones push y tests.

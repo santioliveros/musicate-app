@@ -73,6 +73,8 @@ musikate/
 │   │   ├── (auth)/             # login, código, onboarding
 │   │   ├── (tabs)/             # novedades, avisos, buscar, perfil
 │   │   ├── aviso/[id].tsx      # detalle de aviso
+│   │   ├── aviso/nuevo.tsx     # publicar aviso
+│   │   ├── aviso/mios.tsx      # mis avisos
 │   │   ├── index.tsx
 │   │   └── _layout.tsx
 │   ├── components/             # UI reutilizable

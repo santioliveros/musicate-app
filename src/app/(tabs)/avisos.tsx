@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
 import { useState } from 'react'
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 
@@ -17,6 +18,7 @@ import { colors, fontSize, radii, spacing } from '@/theme'
 import type { ListingType } from '@/types/database'
 
 export default function AvisosScreen() {
+  const router = useRouter()
   const { profile } = useAuth()
   const catalog = useCatalog()
   const [type, setType] = useState<ListingType | 'all'>('all')
@@ -50,6 +52,20 @@ export default function AvisosScreen() {
         title="Avisos"
         subtitle="Encontrá gente para tocar, producir o aprender."
       />
+
+      <View style={styles.actions}>
+        <Button
+          label="Publicar aviso"
+          onPress={() => router.push('/aviso/nuevo')}
+          style={styles.action}
+        />
+        <Button
+          label="Mis avisos"
+          variant="secondary"
+          onPress={() => router.push('/aviso/mios')}
+          style={styles.action}
+        />
+      </View>
 
       <Pressable
         onPress={() => setShowFilters((value) => !value)}
@@ -187,6 +203,15 @@ export default function AvisosScreen() {
 }
 
 const styles = StyleSheet.create({
+  actions: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+    marginBottom: spacing.md,
+  },
+  action: {
+    flex: 1,
+    minHeight: 46,
+  },
   filterToggle: {
     flexDirection: 'row',
     alignItems: 'center',

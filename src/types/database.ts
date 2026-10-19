@@ -81,3 +81,25 @@ export type ListingAuthor = Pick<
 export type ListingWithAuthor = Listing & {
   author: ListingAuthor
 }
+
+export type ContactType = 'whatsapp' | 'instagram' | 'email'
+
+export type ListingContact = {
+  contact_type: ContactType
+  contact_value: string
+}
+
+export type ListingInterest = {
+  listing_id: string
+  profile_id: string
+  message: string | null
+  contact_type: ContactType | null
+  contact_value: string | null
+  created_at: string
+}
+
+export type ListingInterestWithProfile = ListingInterest & {
+  profile: ListingAuthor & {
+    looking_for: LookingFor[]
+  }
+}
