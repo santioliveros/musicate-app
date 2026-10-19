@@ -1,3 +1,4 @@
+import { Image } from 'expo-image'
 import { useRouter } from 'expo-router'
 import { useState } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
@@ -21,6 +22,14 @@ export default function InicioScreen() {
       <PageHeader
         title="Inicio"
         subtitle={profile ? `Hola, ${profile.display_name}.` : 'Para ti y novedades de la escena.'}
+        right={
+          <Image
+            source={require('../../../assets/images/musikate-logo.png')}
+            style={styles.logo}
+            contentFit="contain"
+            accessibilityLabel="musikate"
+          />
+        }
       />
 
       <View style={styles.segmented}>
@@ -100,6 +109,10 @@ function ParaTiContent({ onSeeNovedades }: { onSeeNovedades: () => void }) {
 }
 
 const styles = StyleSheet.create({
+  logo: {
+    width: 112,
+    height: 44,
+  },
   segmented: {
     flexDirection: 'row',
     padding: 4,
