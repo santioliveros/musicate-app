@@ -93,7 +93,7 @@ La salida de `start` da la URL local y las claves. Se copian a `.env.local`.
 En el panel de Supabase:
 
 - Authentication → Providers → Email: habilitado.
-- Authentication → Email Templates → Magic Link: incluí `{{ .Token }}` para que la app reciba el código de 6 dígitos.
+- Authentication → Email Templates → Magic Link: incluí `{{ .Token }}` para que la app reciba el código que llega por email (6 a 10 dígitos).
 - Authentication → URL Configuration: agregá `musikate://auth/callback` cuando configures deep links.
 - Google y Apple se agregan en fase 2, antes de publicar en tiendas.
 

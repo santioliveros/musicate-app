@@ -48,7 +48,7 @@ export default function SignInScreen() {
         <View style={styles.form}>
           <Text style={styles.title}>Entrá a la escena.</Text>
           <Text style={styles.subtitle}>
-            Te mandamos un código de 6 dígitos para confirmar tu email. Sin contraseñas.
+            Te mandamos un código por email para confirmar tu cuenta. Sin contraseñas.
           </Text>
 
           <TextField

@@ -31,8 +31,10 @@ export default function VerifyScreen() {
 
   const handleVerify = async () => {
     if (!email) return
-    if (code.trim().length !== 6) {
-      setError('El código tiene 6 dígitos.')
+    const token = code.replace(/\s/g, '')
+
+    if (token.length < 6 || token.length > 10) {
+      setError('El código tiene entre 6 y 10 dígitos.')
       return
     }
 
@@ -40,7 +42,7 @@ export default function VerifyScreen() {
     setLoading(true)
 
     try {
-      await verifyOtp(email, code)
+      await verifyOtp(email, token)
       await refreshProfile()
 
       const { data: sessionData } = await supabase.auth.getSession()
@@ -95,11 +97,13 @@ export default function VerifyScreen() {
         <View style={styles.form}>
           <TextField
             label="Código"
-            placeholder="123456"
+            placeholder="12345678"
             keyboardType="number-pad"
-            maxLength={6}
+            autoComplete="one-time-code"
+            textContentType="oneTimeCode"
+            maxLength={10}
             value={code}
-            onChangeText={setCode}
+            onChangeText={(value) => setCode(value.replace(/[^0-9]/g, ''))}
             error={error ?? undefined}
             autoFocus
             returnKeyType="done"

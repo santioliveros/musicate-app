@@ -20,7 +20,7 @@ O pegá el contenido de `migrations/*.sql` en el SQL Editor, en orden.
 ## 3. Configurar Auth
 
 - Authentication → Providers → Email: habilitado.
-- Authentication → Email Templates → Magic Link: incluir el token para que la app pueda pedir el código de 6 dígitos:
+- Authentication → Email Templates → Magic Link: incluir el token para que la app pueda pedir el código que llega por email (6 a 10 dígitos):
 
 ```html
 <h2>Tu código de musikate</h2>
