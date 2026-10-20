@@ -150,7 +150,7 @@ Va a shows, escucha bandas nuevas y comparte hallazgos. No toca instrumentos. Qu
 
 - Ver perfil propio y ajeno; editar el propio.
 - Contadores: avisos activos, seguidores, seguidos.
-- Compartir perfil con link (`musicate!://u/usuario` y link web de fallback).
+- Compartir perfil con link (`musicate://u/usuario` y link web de fallback).
 - Perfiles públicos; no hay cuentas privadas.
 
 **Aceptación**

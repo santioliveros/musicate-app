@@ -5,7 +5,7 @@ Mostrá quién sos, encontrá con quién tocar y seguí a la gente que hace mús
 
 > Estado: **scaffold v0.1**. La app base ya está en el repo: Expo + Expo Router, Supabase, auth por email y perfil musical. El módulo de avisos es el próximo paso.
 >
-> Repositorio: [santioliveros/musicate!-app](https://github.com/santioliveros/musicate!-app)
+> Repositorio: [santioliveros/musicate-app](https://github.com/santioliveros/musicate-app)
 
 ## El problema en una frase
 

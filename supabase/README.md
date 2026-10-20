@@ -36,7 +36,7 @@ O pegá el contenido de `migrations/*.sql` en el SQL Editor, en orden:
 
 Sin `{{ .Token }}`, Supabase manda un magic link y la pantalla de verificación no recibe el código.
 
-- Authentication → URL Configuration: agregar `musicate!://auth/callback` cuando se configuren deep links.
+- Authentication → URL Configuration: agregar `musicate://auth/callback` cuando se configuren deep links.
 
 ## 4. Verificar
 
