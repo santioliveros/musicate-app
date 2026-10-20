@@ -483,7 +483,7 @@ export default function OnboardingScreen() {
         </Section>
 
         <Button
-          label={isEdit ? 'Guardar cambios' : 'Entrar a musikate'}
+          label={isEdit ? 'Guardar cambios' : 'Entrar a musicate!'}
           onPress={handleSubmit((values) => mutation.mutate(values))}
           loading={mutation.isPending}
           disabled={catalog.isPending}

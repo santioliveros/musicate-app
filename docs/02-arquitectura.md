@@ -67,7 +67,7 @@ El cliente habla directo con Supabase usando la clave anónima y el JWT del usua
 ## 4. Estructura del repositorio
 
 ```text
-musikate/
+musicate!/
 ├── src/
 │   ├── app/                    # Rutas de Expo Router
 │   │   ├── (auth)/             # login, código, onboarding
@@ -112,7 +112,7 @@ Las rutas de detalle de aviso y perfil público se agregan cuando exista el mód
   - **Buscar**: perfiles y avisos.
   - **Perfil**: propio, con edición y ajustes.
 - Stack para detalle de perfil, detalle de aviso, creación de aviso y reportes.
-- Deep links: `musikate://u/:username`, `musikate://aviso/:id`, `musikate://auth/callback`.
+- Deep links: `musicate!://u/:username`, `musicate!://aviso/:id`, `musicate!://auth/callback`.
 
 ### 5.2 Estado
 
@@ -204,8 +204,8 @@ Dos entornos: **develop** y **prod**, sin staging.
 
 | Entorno | Backend | Builds EAS | Quién lo usa | Se despliega desde |
 | --- | --- | --- | --- | --- |
-| develop | Supabase `musikate-dev` (o local) | `development` (dev client) y `preview` (testers) | Desarrollador y testers internos | `main`, automático |
-| prod | Supabase `musikate-prod` | `production` | Alpha y usuarios finales | tag `vX.Y.Z`, manual |
+| develop | Supabase `musicate!-dev` (o local) | `development` (dev client) y `preview` (testers) | Desarrollador y testers internos | `main`, automático |
+| prod | Supabase `musicate!-prod` | `production` | Alpha y usuarios finales | tag `vX.Y.Z`, manual |
 
 - **Local** no es un entorno: es la instancia local de develop (`supabase start` + dev client).
 - **No hay ramas `develop` ni `prod`.** `main` es la única rama estable; los tags marcan lo publicado.

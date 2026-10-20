@@ -29,14 +29,14 @@ O pegá el contenido de `migrations/*.sql` en el SQL Editor, en orden:
 - Authentication → Email Templates → Magic Link: incluir el token para que la app pueda pedir el código que llega por email (6 a 10 dígitos):
 
 ```html
-<h2>Tu código de musikate</h2>
+<h2>Tu código de musicate!</h2>
 <p>Ingresá este código en la app:</p>
 <p style="font-size: 28px; font-weight: bold; letter-spacing: 4px;">{{ .Token }}</p>
 ```
 
 Sin `{{ .Token }}`, Supabase manda un magic link y la pantalla de verificación no recibe el código.
 
-- Authentication → URL Configuration: agregar `musikate://auth/callback` cuando se configuren deep links.
+- Authentication → URL Configuration: agregar `musicate!://auth/callback` cuando se configuren deep links.
 
 ## 4. Verificar
 

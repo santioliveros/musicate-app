@@ -1,4 +1,4 @@
--- musikate · 0001
+-- musicate! · 0001
 -- Extensiones y catálogos base.
 
 create extension if not exists citext;

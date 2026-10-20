@@ -42,8 +42,8 @@ Sin video en el MVP, el storage y el egress son mínimos.
 ## 3. Puesta en marcha
 
 ```powershell
-git clone https://github.com/santioliveros/musikate-app.git
-cd musikate-app
+git clone https://github.com/santioliveros/musicate!-app.git
+cd musicate!-app
 npm install
 Copy-Item .env.example .env.local
 ```
@@ -94,7 +94,7 @@ En el panel de Supabase:
 
 - Authentication → Providers → Email: habilitado.
 - Authentication → Email Templates → Magic Link: incluí `{{ .Token }}` para que la app reciba el código que llega por email (6 a 10 dígitos).
-- Authentication → URL Configuration: agregá `musikate://auth/callback` cuando configures deep links.
+- Authentication → URL Configuration: agregá `musicate!://auth/callback` cuando configures deep links.
 - Google y Apple se agregan en fase 2, antes de publicar en tiendas.
 
 ### Verificar

@@ -10,7 +10,7 @@
 - publican un aviso,
 - envían un "me interesa".
 
-No cuenta follows ni visitas: cuenta personas que intentan conectar con otra. Es la señal de que `musikate` sirve como red y no como vidriera.
+No cuenta follows ni visitas: cuenta personas que intentan conectar con otra. Es la señal de que `musicate!` sirve como red y no como vidriera.
 
 **Apoyo:** perfiles completos, avisos activos y follows.
 

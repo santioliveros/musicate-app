@@ -9,7 +9,7 @@
 - **Ruta:** utilidad primero. MVP con perfiles + avisos; covers verticales en fase 2 ([ADR-0006](decisiones/0006-ruta-utilidad-first-y-mvp-sin-video.md)).
 - **Formato de video (fase 2):** vertical 9:16, ≤ 60 s, estilo TikTok/Reels.
 - **Chat 1:1 y perfil de banda:** fase 3, fuera del MVP.
-- **Marca:** `musikate`, todo en minúsculas. Sin logo ni redes todavía.
+- **Marca:** `musicate!`, todo en minúsculas. Sin logo ni redes todavía.
 - **Stack:** React Native + Expo + Supabase.
 - **Mercado:** Montevideo.
 - **Edad:** 18+ en la alpha.

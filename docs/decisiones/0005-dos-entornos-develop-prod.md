@@ -22,8 +22,8 @@ Usar **dos entornos**:
 
 | Entorno | Backend | Builds | Origen |
 | --- | --- | --- | --- |
-| develop | Supabase `musikate-dev` (o local) | EAS `development` y `preview` | `main`, automático |
-| prod | Supabase `musikate-prod` | EAS `production` | tag `vX.Y.Z`, manual |
+| develop | Supabase `musicate!-dev` (o local) | EAS `development` y `preview` | `main`, automático |
+| prod | Supabase `musicate!-prod` | EAS `production` | tag `vX.Y.Z`, manual |
 
 Reglas asociadas:
 

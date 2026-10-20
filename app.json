@@ -1,22 +1,22 @@
 {
   "expo": {
-    "name": "musikate",
-    "slug": "musikate",
+    "name": "musicate!",
+    "slug": "musicate",
     "version": "0.1.0",
     "description": "La red social para mostrar lo que hacés, encontrar con quién tocar y seguir a la gente de la escena.",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "musikate",
+    "scheme": "musicate",
     "userInterfaceStyle": "dark",
     "backgroundColor": "#0D0D0D",
     "assetBundlePatterns": ["assets/images/*"],
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.musikate.app"
+      "bundleIdentifier": "com.musicate.app"
     },
     "android": {
-      "package": "com.musikate.app",
+      "package": "com.musicate.app",
       "adaptiveIcon": {
         "backgroundColor": "#0D0D0D",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -42,7 +42,7 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "musikate usa tus fotos para tu avatar.",
+          "photosPermission": "musicate! usa tus fotos para tu avatar.",
           "cameraPermission": false,
           "microphonePermission": false
         }

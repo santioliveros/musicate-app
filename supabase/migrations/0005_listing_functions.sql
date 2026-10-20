@@ -1,4 +1,4 @@
--- musikate · 0005
+-- musicate! · 0005
 -- Funciones para crear y cerrar avisos de forma atómica.
 
 create or replace function public.create_listing(
