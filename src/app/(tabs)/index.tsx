@@ -102,10 +102,6 @@ function ParaTiContent({ onSeeNovedades }: { onSeeNovedades: () => void }) {
 }
 
 const styles = StyleSheet.create({
-  logo: {
-    width: 112,
-    height: 44,
-  },
   header: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -113,8 +109,8 @@ const styles = StyleSheet.create({
     paddingBottom: spacing.xl,
   },
   wordmark: {
-    width: 200,
-    height: 44,
+    width: 240,
+    height: 49,
   },
   segmented: {
     flexDirection: 'row',
