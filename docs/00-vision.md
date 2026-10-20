@@ -4,7 +4,7 @@
 
 ## 1. Resumen
 
-`musikate` es la red social de la escena musical uruguaya. Un lugar para mostrar quién sos, encontrar con quién tocar y seguir lo que pasa.
+`musicate!` es la red social de la escena musical uruguaya. Un lugar para mostrar quién sos, encontrar con quién tocar y seguir lo que pasa.
 
 La visión completa incluye covers verticales, shows y cursos. Pero el MVP arranca por la **utilidad**: perfiles musicales y avisos para encontrar integrantes, bandas, productores y clases. El video vertical llega en fase 2, cuando haya una comunidad usando la app.
 
@@ -123,7 +123,7 @@ Métricas de apoyo en [Métricas y experimentos](06-metricas-experimentos.md).
 
 ## 12. Marca y tono
 
-- **Nombre:** `musikate`, siempre en minúsculas, incluso al inicio de una oración y en el logo.
+- **Nombre:** `musicate!`, siempre en minúsculas, incluso al inicio de una oración y en el logo.
 - **Tono:** cercano, de escena, sin corporativismo. Español rioplatense. Habla como un músico, no como un community manager.
 - **Tagline tentativa:** "tu música, tu gente". Alternativas: "la escena en tus manos", "donde la música se encuentra".
 - **Descripción pública:** "La red social para mostrar lo que hacés, encontrar con quién tocar y seguir a la gente de la escena." Sin mención de ciudad ni país.

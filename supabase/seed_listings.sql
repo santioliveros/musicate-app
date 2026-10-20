@@ -1,4 +1,4 @@
--- musikate · seed de avisos para desarrollo
+-- musicate! · seed de avisos para desarrollo
 -- Ejecutar después de tener al menos un perfil (después del onboarding).
 -- Pensado para una tabla listings vacía: crea 3 avisos del primer perfil.
 -- Si ya hay avisos propios, el trigger de límite puede rechazar alguno.

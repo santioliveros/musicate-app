@@ -1,4 +1,4 @@
--- musikate · 0002
+-- musicate! · 0002
 -- Perfiles, identidad musical y RLS.
 
 create table if not exists public.profiles (

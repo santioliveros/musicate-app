@@ -16,7 +16,7 @@ El MVP no aloja música: solo perfiles, avisos y avatares. Eso baja el riesgo de
 | R5 | Rechazo en tiendas | Media | Medio | Alpha por TestFlight/Play Internal; reporte y bloqueo desde el día uno. |
 | R6 | Scope creep: siete propósitos en 2-3 h/semana | Alta | Medio | Roadmap por fases y backlog con "no ahora". |
 | R7 | Falla de seguridad o fuga de datos | Baja | Crítico | RLS, pruebas con dos cuentas, backups, minimización. |
-| R8 | Conflicto de marca `musikate` | Media | Medio | Búsqueda en INPI, dominios y redes antes de invertir en logo. |
+| R8 | Conflicto de marca `musicate!` | Media | Medio | Búsqueda en INPI, dominios y redes antes de invertir en logo. |
 | R9 | Abandono por lentitud | Alta | Alto | Hitos chicos, bloque fijo, demos visibles, plan de 8-12 meses. |
 | R10 | Cobros y facturación mal resueltos | Baja (alpha gratis) | Medio | Asesoría contable antes de facturar. |
 
@@ -30,7 +30,7 @@ No aplica al MVP porque no hay video ni audio. Se activa **antes de subir el pri
 
 ### Mitigaciones antes de la fase 2
 
-1. **Términos claros**: el usuario declara que tiene derechos o autorización y otorga una licencia limitada a `musikate`.
+1. **Términos claros**: el usuario declara que tiene derechos o autorización y otorga una licencia limitada a `musicate!`.
 2. **Límite de 60 segundos** y prohibición de canciones completas o audio de terceros.
 3. **Notificación y baja**: canal visible (`copyright@...`) y procedimiento documentado.
 4. **Política de reincidentes**: suspender cuentas con reclamos reiterados.
@@ -134,8 +134,8 @@ La alpha se distribuye por TestFlight y Play Internal. La publicación pública 
 
 ## 6. Marca y propiedad intelectual
 
-- `musikate` se escribe todo en minúsculas; el logo y las redes se crean después de la alpha.
-- Buscar "musikate" en INPI Uruguay, registros regionales y USPTO/EUIPO antes de encargar logo.
+- `musicate!` se escribe todo en minúsculas; el logo y las redes se crean después de la alpha.
+- Buscar "musicate!" en INPI Uruguay, registros regionales y USPTO/EUIPO antes de encargar logo.
 - Verificar dominio `.com.uy`, `.com`, `.uy` y usuarios en Instagram/TikTok/YouTube.
 - El código es propiedad del proyecto; definir licencia y titularidad si se suma un socio.
 - Los términos deben aclarar que el contenido del usuario sigue siendo suyo y que la plataforma tiene licencia para mostrarlo.
@@ -175,4 +175,4 @@ La alpha se distribuye por TestFlight y Play Internal. La publicación pública 
 4. ¿Qué pasa si un menor se registra con datos falsos?
 5. ¿Qué licencias se necesitan para covers de 60 s (fase 2)?
 6. ¿Cómo se factura una promoción paga a un artista local?
-7. ¿La marca `musikate` es registrable y libre en la clase 9/41/42?
+7. ¿La marca `musicate!` es registrable y libre en la clase 9/41/42?

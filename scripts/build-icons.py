@@ -1,4 +1,4 @@
-# Genera los assets de la app a partir del logotipo de musikate.
+# Genera los assets de la app a partir del logotipo de musicate!.
 # Requiere Pillow: python scripts/build-icons.py <ruta-al-logotipo.png>
 import sys
 from pathlib import Path
@@ -92,7 +92,7 @@ def main() -> None:
     save(pad_square(logo, 0.92), "icon.png", 1024)
 
     # Wordmark del header de Inicio: logotipo transparente sin margen.
-    save(logo, "musikate-wordmark.png", 640)
+    save(logo, "musicate-wordmark.png", 640)
 
     # Favicon web.
     save(pad_square(logo, 0.88), "favicon.png", 48)

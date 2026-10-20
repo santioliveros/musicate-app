@@ -1,11 +1,11 @@
-# musikate
+# musicate!
 
 **La red social para mostrar lo que hacés, encontrar con quién tocar y seguir a la gente de la escena.**
 Mostrá quién sos, encontrá con quién tocar y seguí a la gente que hace música.
 
 > Estado: **scaffold v0.1**. La app base ya está en el repo: Expo + Expo Router, Supabase, auth por email y perfil musical. El módulo de avisos es el próximo paso.
 >
-> Repositorio: [santioliveros/musikate-app](https://github.com/santioliveros/musikate-app)
+> Repositorio: [santioliveros/musicate-app](https://github.com/santioliveros/musicate-app)
 
 ## El problema en una frase
 

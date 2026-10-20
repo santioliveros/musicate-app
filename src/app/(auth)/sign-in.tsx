@@ -41,7 +41,7 @@ export default function SignInScreen() {
     >
       <Screen contentStyle={styles.content}>
         <View style={styles.brand}>
-          <Text style={styles.logo}>musikate</Text>
+          <Text style={styles.logo}>musicate!</Text>
           <Text style={styles.tagline}>tu música, tu gente.</Text>
         </View>
 

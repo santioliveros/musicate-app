@@ -14,7 +14,7 @@ Esto deja dos caminos:
 1. Integrar metadata y previews de Spotify/Apple Music.
 2. Alojar contenido propio de los usuarios: covers en video corto, fotos y textos.
 
-La opción 1 reduce el riesgo de derechos, pero convierte a musikate en una capa sobre otro servicio y limita la expresividad. La opción 2 da identidad propia, pero traslada el riesgo legal y de moderación a la plataforma.
+La opción 1 reduce el riesgo de derechos, pero convierte a musicate! en una capa sobre otro servicio y limita la expresividad. La opción 2 da identidad propia, pero traslada el riesgo legal y de moderación a la plataforma.
 
 ## Decisión
 
@@ -32,7 +32,7 @@ La opción 1 reduce el riesgo de derechos, pero convierte a musikate en una capa
 ## Consecuencias
 
 ### Positivas
-- Identidad propia: el contenido vive en musikate.
+- Identidad propia: el contenido vive en musicate!.
 - El cover corto es un formato nativo, barato de producir y fácil de consumir.
 - No hay dependencia de APIs de terceros para el contenido central.
 - El modelo de datos es simple: un post con un archivo y metadatos.

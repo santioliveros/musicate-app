@@ -1,4 +1,4 @@
--- musikate · 0003
+-- musicate! · 0003
 -- Bucket de avatares y políticas de storage.
 
 insert into storage.buckets (id, name, public)

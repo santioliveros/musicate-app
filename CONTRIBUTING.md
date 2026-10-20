@@ -1,4 +1,4 @@
-# Cómo trabajamos en musikate
+# Cómo trabajamos en musicate!
 
 Este documento define el método, no el código. Está pensado para avanzar 2-3 horas por semana sin perder el hilo.
 
@@ -64,4 +64,4 @@ Abrí un issue con: pasos para reproducir, resultado esperado, resultado actual,
 - `docs/` es la fuente de verdad del producto y la técnica.
 - Cada cambio de alcance actualiza el PRD y el backlog en el mismo PR.
 - Los docs se escriben en español claro; el código y los nombres técnicos en inglés.
-- `musikate` se escribe siempre en minúsculas, incluso al inicio de una oración.
+- `musicate!` se escribe siempre en minúsculas, incluso al inicio de una oración.

@@ -18,10 +18,10 @@ export default function InicioScreen() {
     <Screen>
       <View style={styles.header}>
         <Image
-          source={require('../../../assets/images/musikate-wordmark.png')}
+          source={require('../../../assets/images/musicate-wordmark.png')}
           style={styles.wordmark}
           contentFit="contain"
-          accessibilityLabel="musikate"
+          accessibilityLabel="musicate!"
         />
       </View>
 

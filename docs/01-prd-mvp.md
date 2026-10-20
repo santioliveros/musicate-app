@@ -150,7 +150,7 @@ Va a shows, escucha bandas nuevas y comparte hallazgos. No toca instrumentos. Qu
 
 - Ver perfil propio y ajeno; editar el propio.
 - Contadores: avisos activos, seguidores, seguidos.
-- Compartir perfil con link (`musikate://u/usuario` y link web de fallback).
+- Compartir perfil con link (`musicate://u/usuario` y link web de fallback).
 - Perfiles públicos; no hay cuentas privadas.
 
 **Aceptación**
@@ -333,7 +333,7 @@ No se construye ahora, pero el MVP no debe bloquearlo:
 ## 12. Supuestos y decisiones
 
 - 2-3 h/semana; experiencia de tutoriales; IA como apoyo.
-- Marca `musikate`, todo en minúsculas; sin logo ni redes todavía.
+- Marca `musicate!`, todo en minúsculas; sin logo ni redes todavía.
 - Sin chat ni perfil de banda (fase 3).
 - Sin video en el MVP (fase 2).
 - Solo email como método de acceso.

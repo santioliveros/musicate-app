@@ -1,4 +1,4 @@
--- musikate · 0004
+-- musicate! · 0004
 -- Avisos, contactos e intereses.
 
 do $$
