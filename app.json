@@ -7,7 +7,7 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "musikate",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "backgroundColor": "#0D0D0D",
     "assetBundlePatterns": ["assets/images/*"],
     "newArchEnabled": true,
