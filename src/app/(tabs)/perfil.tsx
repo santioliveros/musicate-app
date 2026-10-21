@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
 import * as Linking from 'expo-linking'
 import { useRouter } from 'expo-router'
+import { useState } from 'react'
 import { Alert, Pressable, StyleSheet, Text, View } from 'react-native'
 
 import { Avatar } from '@/components/avatar'
@@ -32,11 +33,20 @@ const LEVEL_LABELS: Record<SkillLevel, string> = {
 
 export default function PerfilScreen() {
   const router = useRouter()
-  const { profile, signOut } = useAuth()
+  const { profile, session, signOut } = useAuth()
   const catalog = useCatalog()
   const taxonomy = useProfileTaxonomy(profile?.id)
+  const [signingOut, setSigningOut] = useState(false)
 
-  if (!profile) return <LoadingView label="Cargando tu perfil…" />
+  // Si ya no hay usuario no mostramos un spinner eterno: el redirect a la
+  // bienvenida lo hace SignOutRedirect. Solo cargamos mientras hay sesión.
+  if (!profile) {
+    return session ? (
+      <LoadingView label="Cargando tu perfil…" />
+    ) : (
+      <LoadingView label="Cerrando sesión…" />
+    )
+  }
 
   const instruments = (catalog.data?.instruments ?? []).filter((instrument) =>
     taxonomy.data?.instrumentIds.includes(instrument.id),
@@ -57,10 +67,24 @@ export default function PerfilScreen() {
     void Linking.openURL(normalized)
   }
 
+  const handleSignOut = async () => {
+    setSigningOut(true)
+    try {
+      await signOut()
+      // No hace falta navegar acá: SignOutRedirect detecta la sesión caída.
+    } catch (cause) {
+      setSigningOut(false)
+      Alert.alert(
+        'No pudimos cerrar sesión',
+        cause instanceof Error ? cause.message : 'Revisá la conexión y probá de nuevo.',
+      )
+    }
+  }
+
   const confirmSignOut = () => {
     Alert.alert('Cerrar sesión', '¿Seguro que querés salir?', [
       { text: 'Cancelar', style: 'cancel' },
-      { text: 'Cerrar sesión', style: 'destructive', onPress: () => void signOut() },
+      { text: 'Cerrar sesión', style: 'destructive', onPress: () => void handleSignOut() },
     ])
   }
 
@@ -156,7 +180,12 @@ export default function PerfilScreen() {
       ) : null}
 
       <View style={styles.footer}>
-        <Button label="Cerrar sesión" variant="danger" onPress={confirmSignOut} />
+        <Button
+          label="Cerrar sesión"
+          variant="danger"
+          onPress={confirmSignOut}
+          loading={signingOut}
+        />
       </View>
     </Screen>
   )

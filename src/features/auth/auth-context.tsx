@@ -1,4 +1,5 @@
 import type { Session } from '@supabase/supabase-js'
+import { useQueryClient } from '@tanstack/react-query'
 import {
   createContext,
   useCallback,
@@ -9,6 +10,7 @@ import {
   type ReactNode,
 } from 'react'
 
+import { unregisterPushToken } from '@/features/trust/push'
 import { supabase } from '@/lib/supabase'
 import type { Profile } from '@/types/database'
 
@@ -45,6 +47,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null)
   const [profile, setProfile] = useState<Profile | null>(null)
   const [loading, setLoading] = useState(true)
+  const queryClient = useQueryClient()
 
   useEffect(() => {
     let active = true
@@ -94,9 +97,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const signOut = useCallback(async () => {
-    await supabase.auth.signOut()
+    const currentProfileId = profile?.id
+
+    // Desregistrar el push va primero: depende de la sesión para poder borrar
+    // la fila por RLS, y si falla no debe impedir el cierre.
+    if (currentProfileId) {
+      await unregisterPushToken(currentProfileId)
+    }
+
+    const { error } = await supabase.auth.signOut()
+
+    // Se limpia el estado local pase lo que pase: si el servidor no responde,
+    // al menos el usuario sale de la app y no queda en un estado roto.
+    if (error) {
+      console.warn('[auth] signOut remoto falló, se limpia la sesión local:', error.message)
+    }
+
+    // Nada del usuario anterior debe quedar cacheado para el próximo login.
+    queryClient.clear()
     setProfile(null)
-  }, [])
+    setSession(null)
+  }, [profile?.id, queryClient])
 
   const value = useMemo(
     () => ({ session, profile, loading, refreshProfile, signOut }),

@@ -36,3 +36,33 @@ export async function registerPushToken(profileId: string) {
   if (error) throw error
   return token
 }
+
+/**
+ * Saca el token de este dispositivo del perfil. Se corre ANTES del signOut
+ * porque la tabla push_tokens tiene RLS por auth.uid(): después ya no hay
+ * sesión y el delete afectaría 0 filas sin avisar.
+ */
+export async function unregisterPushToken(profileId: string) {
+  if (Platform.OS === 'web') return
+
+  try {
+    const Notifications = await import('expo-notifications')
+
+    const projectId =
+      (await import('expo-constants')).default?.expoConfig?.extra?.eas?.projectId ??
+      (await import('expo-constants')).default?.easConfig?.projectId
+    if (!projectId) return
+
+    const { data: pushToken } = await Notifications.getExpoPushTokenAsync({ projectId })
+    if (!pushToken) return
+
+    await supabase
+      .from('push_tokens')
+      .delete()
+      .eq('profile_id', profileId)
+      .eq('token', pushToken)
+  } catch (cause) {
+    // Si falla, no bloqueamos el cierre de sesión: el token vence igual.
+    console.warn('[push] no se pudo desregistrar el token:', cause)
+  }
+}
