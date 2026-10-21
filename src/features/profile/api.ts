@@ -8,14 +8,43 @@ export type UpdateProfileInput = {
   displayName: string
   bio: string
   city: string
-  lookingFor: LookingFor[]
-  instrumentIds: number[]
-  genreIds: number[]
-  level: SkillLevel
-  instagramUrl: string
-  youtubeUrl: string
-  spotifyUrl: string
-  websiteUrl: string
+  // La taxonomía y los links del perfil completo son opcionales: el sign-in
+  // guarda solo identidad y usa esto para mandar únicamente lo que cambió.
+  lookingFor?: LookingFor[]
+  instrumentIds?: number[]
+  genreIds?: number[]
+  level?: SkillLevel
+  instagramUrl?: string
+  youtubeUrl?: string
+  spotifyUrl?: string
+  websiteUrl?: string
+}
+
+export type IdentityInput = Pick<UpdateProfileInput, 'username' | 'displayName' | 'bio' | 'city'>
+
+/** Guarda usuario, nombre, bio y ciudad sin cerrar el onboarding. */
+export async function saveIdentity(userId: string, input: IdentityInput) {
+  const update: Record<string, string | null> = {
+    username: input.username.trim().toLowerCase(),
+    display_name: input.displayName.trim(),
+    bio: input.bio.trim() || null,
+    city: input.city.trim(),
+  }
+
+  const { error } = await supabase.from('profiles').update(update).eq('id', userId)
+  if (error) throw error
+}
+
+/** Devuelve true si el usuario ya estaba dado de alta (su username ya no es el autogenerado). */
+export async function hasCompletedOnboarding(userId: string) {
+  const { data } = await supabase
+    .from('profiles')
+    .select('onboarded_at, username')
+    .eq('id', userId)
+    .maybeSingle()
+
+  if (!data) return false
+  return Boolean(data.onboarded_at) || !/^user_[0-9a-f]{12}$/.test(data.username)
 }
 
 export function getAvatarUrl(path: string | null | undefined) {
@@ -31,18 +60,23 @@ export async function updateProfile(userId: string, input: UpdateProfileInput) {
       display_name: input.displayName.trim(),
       bio: input.bio.trim() || null,
       city: input.city.trim() || 'Montevideo',
-      looking_for: input.lookingFor,
-      instagram_url: input.instagramUrl.trim() || null,
-      youtube_url: input.youtubeUrl.trim() || null,
-      spotify_url: input.spotifyUrl.trim() || null,
-      website_url: input.websiteUrl.trim() || null,
+      looking_for: input.lookingFor ?? [],
+      instagram_url: input.instagramUrl?.trim() || null,
+      youtube_url: input.youtubeUrl?.trim() || null,
+      spotify_url: input.spotifyUrl?.trim() || null,
+      website_url: input.websiteUrl?.trim() || null,
       onboarded_at: new Date().toISOString(),
     })
     .eq('id', userId)
 
   if (error) throw error
 
-  await replaceTaxonomy(userId, input.instrumentIds, input.genreIds, input.level)
+  await replaceTaxonomy(
+    userId,
+    input.instrumentIds ?? [],
+    input.genreIds ?? [],
+    input.level ?? 'intermediate',
+  )
 }
 
 async function replaceTaxonomy(

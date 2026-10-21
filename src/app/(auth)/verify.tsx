@@ -7,13 +7,19 @@ import { Screen } from '@/components/screen'
 import { TextField } from '@/components/text-field'
 import { sendOtp, verifyOtp } from '@/features/auth/api'
 import { useAuth } from '@/features/auth/auth-context'
+import { useSignInDraft } from '@/features/auth/sign-in-draft'
+import { hasCompletedOnboarding, saveIdentity } from '@/features/profile/api'
 import { supabase } from '@/lib/supabase'
 import { colors, fontSize, spacing } from '@/theme'
 
 export default function VerifyScreen() {
   const router = useRouter()
   const { refreshProfile } = useAuth()
-  const { email } = useLocalSearchParams<{ email?: string }>()
+  const { draft } = useSignInDraft()
+  const { email, from } = useLocalSearchParams<{ email?: string; from?: string }>()
+  // Con `from=sign-in` el código llega al final del wizard: hay que guardar
+  // la identidad que se cargó antes de entrar.
+  const fromWizard = from === 'sign-in'
   const [code, setCode] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -43,12 +49,23 @@ export default function VerifyScreen() {
 
     try {
       await verifyOtp(email, token)
-      await refreshProfile()
 
       const { data: sessionData } = await supabase.auth.getSession()
       const userId = sessionData.session?.user.id
-      let onboarded = false
 
+      // Check primero: si la cuenta ya estaba dada de alta no pisamos su perfil.
+      if (userId && fromWizard && !(await hasCompletedOnboarding(userId))) {
+        await saveIdentity(userId, {
+          username: draft.username,
+          displayName: draft.displayName,
+          bio: draft.bio,
+          city: draft.city || 'Montevideo',
+        })
+      }
+
+      await refreshProfile()
+
+      let onboarded = false
       if (userId) {
         const query = () =>
           supabase.from('profiles').select('onboarded_at').eq('id', userId).maybeSingle()
@@ -60,7 +77,12 @@ export default function VerifyScreen() {
         onboarded = Boolean(data?.onboarded_at)
       }
 
-      router.replace(onboarded ? '/(tabs)' : '/(auth)/onboarding')
+      if (fromWizard && !onboarded) {
+        // El sign-in ya juntó la identidad: no tiene sentido pedirla de nuevo.
+        router.replace('/(tabs)')
+      } else {
+        router.replace(onboarded ? '/(tabs)' : '/(auth)/onboarding')
+      }
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : 'Código incorrecto o vencido.')
     } finally {
@@ -122,7 +144,11 @@ export default function VerifyScreen() {
           <Button
             label="Usar otro email"
             variant="ghost"
-            onPress={() => router.replace('/(auth)/sign-in')}
+            onPress={() =>
+              fromWizard
+                ? router.replace('/(auth)/sign-in/identidad')
+                : router.replace('/(auth)/sign-in')
+            }
           />
         </View>
       </Screen>
