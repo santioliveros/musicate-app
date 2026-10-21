@@ -9,7 +9,7 @@ import { Screen } from '@/components/screen'
 import { AvisosContent } from '@/features/listings/avisos-content'
 import { colors, fontSize, radii, spacing } from '@/theme'
 
-type Segment = 'para-ti' | 'novedades'
+type Segment = 'para-ti' | 'explorar'
 
 export default function InicioScreen() {
   const [segment, setSegment] = useState<Segment>('para-ti')
@@ -32,14 +32,14 @@ export default function InicioScreen() {
           onPress={() => setSegment('para-ti')}
         />
         <SegmentButton
-          label="Novedades"
-          active={segment === 'novedades'}
-          onPress={() => setSegment('novedades')}
+          label="Explorar"
+          active={segment === 'explorar'}
+          onPress={() => setSegment('explorar')}
         />
       </View>
 
       {segment === 'para-ti' ? (
-        <ParaTiContent onSeeNovedades={() => setSegment('novedades')} />
+        <ParaTiContent onSeeExplore={() => setSegment('explorar')} />
       ) : (
         <AvisosContent />
       )}
@@ -72,7 +72,7 @@ function SegmentButton({
   )
 }
 
-function ParaTiContent({ onSeeNovedades }: { onSeeNovedades: () => void }) {
+function ParaTiContent({ onSeeExplore }: { onSeeExplore: () => void }) {
   const router = useRouter()
 
   return (
@@ -85,7 +85,7 @@ function ParaTiContent({ onSeeNovedades }: { onSeeNovedades: () => void }) {
         </Text>
         <View style={styles.actions}>
           <Button label="Buscar gente" onPress={() => router.push('/(tabs)/buscar')} />
-          <Button label="Ver novedades" variant="secondary" onPress={onSeeNovedades} />
+          <Button label="Explorar" variant="secondary" onPress={onSeeExplore} />
         </View>
       </View>
 
