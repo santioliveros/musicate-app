@@ -1,8 +1,7 @@
-// Los 19 departamentos de Uruguay.
+// Los 19 departamentos de Uruguay, en orden alfabético.
 // El nombre de cada uno es el que se guarda en profiles.city.
 
 export const DEPARTMENTS = [
-  'Montevideo',
   'Artigas',
   'Canelones',
   'Cerro Largo',
@@ -12,6 +11,7 @@ export const DEPARTMENTS = [
   'Florida',
   'Lavalleja',
   'Maldonado',
+  'Montevideo',
   'Paysandú',
   'Río Negro',
   'Rivera',
