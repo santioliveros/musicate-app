@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
 import { useState } from 'react'
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native'
 
 import { Avatar } from '@/components/avatar'
 import { EmptyState } from '@/components/empty-state'
@@ -22,6 +23,7 @@ const LOOKING_FOR_LABELS: Record<LookingFor, string> = {
 }
 
 export default function BuscarScreen() {
+  const router = useRouter()
   const { profile } = useAuth()
   const [term, setTerm] = useState('')
   const search = useProfileSearch(term, profile?.id)
@@ -68,7 +70,13 @@ export default function BuscarScreen() {
           />
         ) : (
           results.map((result) => (
-            <View key={result.id} style={styles.card}>
+            <Pressable
+              key={result.id}
+              onPress={() =>
+                router.push({ pathname: '/perfil/[id]', params: { id: result.id } })
+              }
+              style={({ pressed }) => [styles.card, pressed ? styles.pressed : null]}
+            >
               <Avatar uri={getAvatarUrl(result.avatar_path)} name={result.display_name} size={48} />
               <View style={styles.cardBody}>
                 <Text style={styles.name}>{result.display_name}</Text>
@@ -83,7 +91,7 @@ export default function BuscarScreen() {
                   </Text>
                 ) : null}
               </View>
-            </View>
+            </Pressable>
           ))
         )}
       </View>
@@ -110,6 +118,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
     backgroundColor: colors.surface,
+  },
+  pressed: {
+    opacity: 0.75,
   },
   cardBody: {
     flex: 1,

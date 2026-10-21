@@ -10,6 +10,7 @@ import { Button } from '@/components/button'
 import { Chip } from '@/components/chip'
 import { EmptyState } from '@/components/empty-state'
 import { LoadingView } from '@/components/loading-view'
+import { SafetyActions } from '@/components/safety-actions'
 import { Screen } from '@/components/screen'
 import { TextField } from '@/components/text-field'
 import { useAuth } from '@/features/auth/auth-context'
@@ -133,7 +134,20 @@ export default function ListingDetailScreen() {
           <Ionicons name="arrow-back" size={22} color={colors.text} />
         </Pressable>
         <Text style={styles.headerTitle}>Aviso</Text>
-        <View style={styles.headerSpacer} />
+        {profile && !isOwner ? (
+          <SafetyActions
+            viewerId={profile.id}
+            target={{
+              type: 'listing',
+              id: listing.id,
+              authorId: listing.author_id,
+              authorName: listing.author.display_name,
+            }}
+            onBlocked={() => router.back()}
+          />
+        ) : (
+          <View style={styles.headerSpacer} />
+        )}
       </View>
 
       <View style={styles.typeBadge}>
