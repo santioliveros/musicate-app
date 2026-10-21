@@ -9,7 +9,7 @@ export const SEEKING_OPTIONS = [
   'Entretenimiento',
   'Clases',
   'Shows en vivo',
-  'No lo sé',
+  'Otro',
 ] as const
 
 export type SeekingOption = (typeof SEEKING_OPTIONS)[number]
