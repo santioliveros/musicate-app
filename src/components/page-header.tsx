@@ -6,12 +6,15 @@ import { colors, fontSize, spacing } from '@/theme'
 type PageHeaderProps = {
   title: string
   subtitle?: string
+  /** Contenido a la izquierda del título (por ejemplo, un botón de volver). */
+  left?: ReactNode
   right?: ReactNode
 }
 
-export function PageHeader({ title, subtitle, right }: PageHeaderProps) {
+export function PageHeader({ title, subtitle, left, right }: PageHeaderProps) {
   return (
     <View style={styles.row}>
+      {left ? <View style={styles.left}>{left}</View> : null}
       <View style={styles.copy}>
         <Text style={styles.title}>{title}</Text>
         {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
@@ -28,6 +31,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     gap: spacing.md,
     marginBottom: spacing.xl,
+  },
+  left: {
+    justifyContent: 'center',
   },
   copy: {
     flex: 1,

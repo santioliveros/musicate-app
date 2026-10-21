@@ -22,13 +22,18 @@ export type UpdateProfileInput = {
 
 export type IdentityInput = Pick<UpdateProfileInput, 'username' | 'displayName' | 'bio' | 'city'>
 
-/** Guarda usuario, nombre, bio y ciudad sin cerrar el onboarding. */
+/**
+ * Guarda la identidad que se cargó en el wizard de sign-in y marca el alta como
+ * completada. `onboarded_at` es lo que habilita el acceso a (tabs): si no se
+ * setea, el usuario rebota al onboarding viejo.
+ */
 export async function saveIdentity(userId: string, input: IdentityInput) {
   const update: Record<string, string | null> = {
     username: input.username.trim().toLowerCase(),
     display_name: input.displayName.trim(),
     bio: input.bio.trim() || null,
     city: input.city.trim(),
+    onboarded_at: new Date().toISOString(),
   }
 
   const { error } = await supabase.from('profiles').update(update).eq('id', userId)

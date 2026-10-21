@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { ActivityIndicator, Alert, Pressable, StyleSheet, Text, View } from 'react-native'
 
 import { Avatar } from '@/components/avatar'
+import { BackButton } from '@/components/back-button'
 import { EmptyState } from '@/components/empty-state'
 import { PageHeader } from '@/components/page-header'
 import { Screen } from '@/components/screen'
@@ -66,9 +67,19 @@ export default function NotificacionesScreen() {
 
   const unread = (notifications.data ?? []).filter((item) => !item.read_at).length
 
+  // Si la pantalla se abrió directo (deep link) no hay historial: se cae a Inicio.
+  const goBack = () => {
+    if (router.canGoBack()) {
+      router.back()
+      return
+    }
+    router.replace('/(tabs)')
+  }
+
   return (
     <Screen>
       <PageHeader
+        left={<BackButton onPress={goBack} />}
         title="Notificaciones"
         subtitle={unread > 0 ? `${unread} sin leer` : 'Estás al día.'}
         right={

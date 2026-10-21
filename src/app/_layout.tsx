@@ -12,6 +12,7 @@ import * as SystemUI from 'expo-system-ui'
 
 import { AuthProvider, useAuth } from '@/features/auth/auth-context'
 import { SignInDraftProvider } from '@/features/auth/sign-in-draft'
+import { useSignOutRedirect } from '@/features/auth/use-sign-out-redirect'
 import { registerPushToken } from '@/features/trust/push'
 import { queryClient } from '@/lib/query-client'
 import { colors } from '@/theme'
@@ -45,6 +46,7 @@ export default function RootLayout() {
               }}
             />
             <PushRegistrar />
+            <SignOutRedirect />
             <SplashGate />
           </SignInDraftProvider>
         </AuthProvider>
@@ -79,5 +81,11 @@ function SplashGate() {
     SplashScreen.hide()
   }, [])
 
+  return null
+}
+
+/** Cuando se cierra sesión, manda a la bienvenida y limpia el wizard. */
+function SignOutRedirect() {
+  useSignOutRedirect()
   return null
 }

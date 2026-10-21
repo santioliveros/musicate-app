@@ -14,12 +14,11 @@ import { colors, fontSize, spacing } from '@/theme'
 const TAB_BAR_CONTENT_HEIGHT = 78
 
 export default function TabsLayout() {
-  const { loading, session, profile } = useAuth()
+  const { loading, session } = useAuth()
   const insets = useSafeAreaInsets()
 
   if (loading) return <LoadingView />
   if (!session) return <Redirect href="/(auth)/sign-in" />
-  if (!profile?.onboarded_at) return <Redirect href="/(auth)/onboarding" />
 
   return (
     <Tabs

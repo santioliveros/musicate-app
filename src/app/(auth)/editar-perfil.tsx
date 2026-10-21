@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Ionicons } from '@expo/vector-icons'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import * as ImagePicker from 'expo-image-picker'
-import { useLocalSearchParams, useRouter } from 'expo-router'
+import { useRouter } from 'expo-router'
 import { useEffect, useRef, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import {
@@ -97,11 +97,9 @@ const DEFAULT_VALUES: FormValues = {
   websiteUrl: '',
 }
 
-export default function OnboardingScreen() {
+export default function EditarPerfilScreen() {
   const router = useRouter()
   const queryClient = useQueryClient()
-  const { edit } = useLocalSearchParams<{ edit?: string }>()
-  const isEdit = edit === '1'
   const { profile, refreshProfile, loading } = useAuth()
   const catalog = useCatalog()
   const taxonomy = useProfileTaxonomy(profile?.id)
@@ -169,7 +167,7 @@ export default function OnboardingScreen() {
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['profile-taxonomy', profile?.id] })
-      router.replace(isEdit ? '/(tabs)/perfil' : '/(tabs)')
+      router.replace('/(tabs)/perfil')
     },
     onError: (cause) => {
       const code =
@@ -247,13 +245,9 @@ export default function OnboardingScreen() {
     >
       <Screen>
         <View style={styles.header}>
-          <Text style={styles.eyebrow}>{isEdit ? 'TU PERFIL' : 'PASO 1 DE 1'}</Text>
-          <Text style={styles.title}>{isEdit ? 'Editar perfil' : 'Armá tu perfil musical'}</Text>
-          <Text style={styles.subtitle}>
-            {isEdit
-              ? 'Actualizá cómo te ve la escena.'
-              : 'Esto es lo que va a ver la gente cuando te encuentre. Podés cambiarlo después.'}
-          </Text>
+          <Text style={styles.eyebrow}>TU PERFIL</Text>
+          <Text style={styles.title}>Editar perfil</Text>
+          <Text style={styles.subtitle}>Actualizá cómo te ve la escena.</Text>
         </View>
 
         <Pressable onPress={() => void pickAvatar()} style={styles.avatarRow}>
@@ -483,15 +477,13 @@ export default function OnboardingScreen() {
         </Section>
 
         <Button
-          label={isEdit ? 'Guardar cambios' : 'Entrar a musicate!'}
+          label="Guardar cambios"
           onPress={handleSubmit((values) => mutation.mutate(values))}
           loading={mutation.isPending}
           disabled={catalog.isPending}
         />
 
-        {isEdit ? (
-          <Button label="Cancelar" variant="ghost" onPress={() => router.back()} />
-        ) : null}
+        <Button label="Cancelar" variant="ghost" onPress={() => router.back()} />
       </Screen>
     </KeyboardAvoidingView>
   )
