@@ -1,5 +1,10 @@
 import { QueryClientProvider } from '@tanstack/react-query'
-import { Stack } from 'expo-router'
+// Stack se importa del subpath público 'expo-router/stack' y no de 'expo-router'
+// a propósito: expo-router también exporta un SplashScreen (otro módulo), y con
+// los dos imports juntos Babel colapsa ambos en el mismo namespace, dejando
+// SplashScreen sin setOptions.
+import { Stack } from 'expo-router/stack'
+import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar'
 import { useEffect } from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -9,6 +14,16 @@ import { AuthProvider } from '@/features/auth/auth-context'
 import { SignInDraftProvider } from '@/features/auth/sign-in-draft'
 import { queryClient } from '@/lib/query-client'
 import { colors } from '@/theme'
+
+// Mantiene el splash nativo (app.json → expo-splash-screen, el wordmark) visible
+// hasta que la primera pantalla de React ya dibujó. Así el paso del splash
+// nativo a la bienvenida no muestra ningún frame negro.
+// Va en el scope global y sin await, como pide la doc de Expo.
+void SplashScreen.preventAutoHideAsync().catch(() => {
+  // En entornos sin el módulo nativo (p. ej. web) no hay splash que retener.
+})
+
+SplashScreen.setOptions({ duration: 250, fade: true })
 
 export default function RootLayout() {
   useEffect(() => {
@@ -28,9 +43,22 @@ export default function RootLayout() {
                 contentStyle: { backgroundColor: colors.background },
               }}
             />
+            <SplashGate />
           </SignInDraftProvider>
         </AuthProvider>
       </QueryClientProvider>
     </SafeAreaProvider>
   )
+}
+
+/**
+ * Esconde el splash nativo solo cuando el árbol ya se montó. Al ir como hermano
+ * del Stack, corre después de que las pantallas quedaron en pantalla.
+ */
+function SplashGate() {
+  useEffect(() => {
+    SplashScreen.hide()
+  }, [])
+
+  return null
 }
