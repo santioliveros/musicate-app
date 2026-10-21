@@ -22,6 +22,8 @@ O pegá el contenido de `migrations/*.sql` en el SQL Editor, en orden:
 3. `0003_storage_avatars.sql`
 4. `0004_listings.sql`
 5. `0005_listing_functions.sql`
+6. `0006_trust_and_notifications.sql`
+7. `0007_push.sql`
 
 ## 3. Configurar Auth
 
@@ -56,11 +58,58 @@ Después de completar el onboarding, ejecutá `seed_listings.sql` para crear 3 a
 
 El seed usa el primer perfil y crea 3 avisos: busca baterista, ofrece clases y busca productor.
 
-## 6. Notas
+## 6. Push notifications
+
+El push real requiere **development build** (no funciona en Expo Go) y un `projectId` de EAS.
+
+### Variables de la Edge Function
+
+En **Edge Functions → Secrets**:
+
+| Secreto | Valor |
+| --- | --- |
+| `PUSH_WEBHOOK_SECRET` | una cadena aleatoria larga |
+| `EXPO_ACCESS_TOKEN` | opcional; solo si habilitaste el acceso a la API de Expo Push |
+
+`SUPABASE_URL` y `SUPABASE_SERVICE_ROLE_KEY` los inyecta Supabase automáticamente.
+
+### Deploy
+
+```powershell
+npx supabase functions deploy send-push
+```
+
+### Programar el envío
+
+Dispará `send-push` cada minuto con `pg_cron` + `pg_net`:
+
+```sql
+select cron.schedule(
+  'send-push',
+  '* * * * *',
+  $$
+    select net.http_post(
+      url := 'https://<project-ref>.supabase.co/functions/v1/send-push',
+      headers := jsonb_build_object(
+        'x-webhook-secret', '<secreto>',
+        'content-type', 'application/json'
+      ),
+      body := '{}'::jsonb
+    );
+  $$
+);
+```
+
+### Limitación conocida
+
+Cada ejecución procesa hasta 50 notificaciones pendientes, incluidas las de personas sin tokens registrados. Revisá `notifications.push_error` y `push_tokens.last_error` antes de investigar.
+
+## 7. Notas
 
 - `profiles` se crea automáticamente con un trigger cuando se registra un usuario.
 - El username provisional es `user_<12 caracteres>`; el onboarding lo reemplaza.
 - La alpha usa email OTP. Google y Apple se agregan en fase 2.
 - La migración 0004 crea `listings`, `listing_contacts` y `listing_interests`.
 - La migración 0005 crea `create_listing` y `close_listing`.
-- Las notificaciones y los reportes llegan en la migración 0006.
+- La migración 0006 crea `notifications`, `blocks`, `reports` y `push_tokens`.
+- La migración 0007 agrega el estado de envío del push y la limpieza de tokens.
