@@ -73,7 +73,9 @@ function HomeRedirect() {
 
   useEffect(() => {
     if (!profile) return
-    router.replace(profile.onboarded_at ? '/(tabs)' : '/(auth)/onboarding')
+    // El alta ahora se completa en el wizard de sign-in, así que una cuenta con
+    // sesión válida entra directo a la app.
+    router.replace('/(tabs)')
   }, [profile, router])
 
   return <LoadingView label="Abriendo musicate!…" />

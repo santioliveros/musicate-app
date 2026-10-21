@@ -53,8 +53,13 @@ export default function VerifyScreen() {
       const { data: sessionData } = await supabase.auth.getSession()
       const userId = sessionData.session?.user.id
 
-      // Check primero: si la cuenta ya estaba dada de alta no pisamos su perfil.
-      if (userId && fromWizard && !(await hasCompletedOnboarding(userId))) {
+      // Si la cuenta ya estaba dada de alta (p. ej. el usuario cerró sesión y
+      // vuelve a entrar), no le pisamos el perfil con datos del wizard.
+      const isNewAccount = userId
+        ? !(await hasCompletedOnboarding(userId))
+        : false
+
+      if (userId && fromWizard && isNewAccount) {
         await saveIdentity(userId, {
           username: draft.username,
           displayName: draft.displayName,
@@ -65,24 +70,15 @@ export default function VerifyScreen() {
 
       await refreshProfile()
 
-      let onboarded = false
-      if (userId) {
-        const query = () =>
-          supabase.from('profiles').select('onboarded_at').eq('id', userId).maybeSingle()
-        let { data } = await query()
-        if (!data) {
-          await new Promise((resolve) => setTimeout(resolve, 800))
-          ;({ data } = await query())
+      if (!fromWizard) {
+        const isNewAccount = userId ? !(await hasCompletedOnboarding(userId)) : false
+        // Solo avisa por consola: el alta se completa en el wizard de sign-in.
+        if (isNewAccount) {
+          console.warn('[auth] cuenta sin perfil completo; entra directo a la app.')
         }
-        onboarded = Boolean(data?.onboarded_at)
       }
 
-      if (fromWizard && !onboarded) {
-        // El sign-in ya juntó la identidad: no tiene sentido pedirla de nuevo.
-        router.replace('/(tabs)')
-      } else {
-        router.replace(onboarded ? '/(tabs)' : '/(auth)/onboarding')
-      }
+      router.replace('/(tabs)')
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : 'Código incorrecto o vencido.')
     } finally {

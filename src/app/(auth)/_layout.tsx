@@ -14,7 +14,7 @@ export default function AuthLayout() {
     >
       <Stack.Screen name="sign-in" />
       <Stack.Screen name="verify" />
-      <Stack.Screen name="onboarding" />
+      <Stack.Screen name="editar-perfil" />
     </Stack>
   )
 }

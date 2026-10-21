@@ -113,7 +113,7 @@ export default function PerfilScreen() {
       <Button
         label="Editar perfil"
         variant="secondary"
-        onPress={() => router.push({ pathname: '/(auth)/onboarding', params: { edit: '1' } })}
+        onPress={() => router.push('/(auth)/editar-perfil')}
       />
 
       {profile.bio ? (
