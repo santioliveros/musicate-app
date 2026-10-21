@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons'
 import { Image } from 'expo-image'
 import { useRouter } from 'expo-router'
 import { useState } from 'react'
@@ -6,23 +7,41 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { Button } from '@/components/button'
 import { EmptyState } from '@/components/empty-state'
 import { Screen } from '@/components/screen'
+import { useAuth } from '@/features/auth/auth-context'
 import { AvisosContent } from '@/features/listings/avisos-content'
+import { useUnreadCount } from '@/features/trust/api'
 import { colors, fontSize, radii, spacing } from '@/theme'
 
 type Segment = 'para-ti' | 'explorar'
 
 export default function InicioScreen() {
+  const router = useRouter()
+  const { profile } = useAuth()
   const [segment, setSegment] = useState<Segment>('para-ti')
+  const unread = useUnreadCount(profile?.id)
 
   return (
     <Screen>
       <View style={styles.header}>
+        <View style={styles.headerSpacer} />
         <Image
           source={require('../../../assets/images/musicate-wordmark.png')}
           style={styles.wordmark}
           contentFit="contain"
           accessibilityLabel="musicate!"
         />
+        <Pressable
+          onPress={() => router.push('/notificaciones')}
+          style={({ pressed }) => [styles.bell, pressed ? styles.pressed : null]}
+          accessibilityLabel="Notificaciones"
+        >
+          <Ionicons name="notifications-outline" size={22} color={colors.text} />
+          {unread > 0 ? (
+            <View style={styles.badge}>
+              <Text style={styles.badgeText}>{unread > 9 ? '9+' : unread}</Text>
+            </View>
+          ) : null}
+        </Pressable>
       </View>
 
       <View style={styles.segmented}>
@@ -103,14 +122,45 @@ function ParaTiContent({ onSeeExplore }: { onSeeExplore: () => void }) {
 
 const styles = StyleSheet.create({
   header: {
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     paddingTop: spacing.sm,
     paddingBottom: spacing.xl,
+  },
+  headerSpacer: {
+    width: 40,
   },
   wordmark: {
     width: 240,
     height: 49,
+  },
+  bell: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  badge: {
+    position: 'absolute',
+    top: -2,
+    right: -2,
+    minWidth: 18,
+    height: 18,
+    borderRadius: 9,
+    paddingHorizontal: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.primary,
+  },
+  badgeText: {
+    color: colors.onPrimary,
+    fontSize: 10,
+    fontWeight: '800',
   },
   segmented: {
     flexDirection: 'row',
