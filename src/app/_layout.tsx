@@ -10,8 +10,9 @@ import { useEffect } from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import * as SystemUI from 'expo-system-ui'
 
-import { AuthProvider } from '@/features/auth/auth-context'
+import { AuthProvider, useAuth } from '@/features/auth/auth-context'
 import { SignInDraftProvider } from '@/features/auth/sign-in-draft'
+import { registerPushToken } from '@/features/trust/push'
 import { queryClient } from '@/lib/query-client'
 import { colors } from '@/theme'
 
@@ -43,12 +44,30 @@ export default function RootLayout() {
                 contentStyle: { backgroundColor: colors.background },
               }}
             />
+            <PushRegistrar />
             <SplashGate />
           </SignInDraftProvider>
         </AuthProvider>
       </QueryClientProvider>
     </SafeAreaProvider>
   )
+}
+
+/**
+ * Registra el token de push del dispositivo una vez que hay sesión. En web y
+ * en Expo Go no hace nada: el push real requiere un development build.
+ */
+function PushRegistrar() {
+  const { profile } = useAuth()
+
+  useEffect(() => {
+    if (!profile?.id) return
+    void registerPushToken(profile.id).catch((cause) => {
+      console.warn('[push] no se pudo registrar el token:', cause)
+    })
+  }, [profile?.id])
+
+  return null
 }
 
 /**

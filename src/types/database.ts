@@ -103,3 +103,32 @@ export type ListingInterestWithProfile = ListingInterest & {
     looking_for: LookingFor[]
   }
 }
+
+export type NotificationType = 'follow' | 'listing_interest' | 'system'
+
+export type Notification = {
+  id: string
+  recipient_id: string
+  actor_id: string | null
+  type: NotificationType
+  listing_id: string | null
+  read_at: string | null
+  created_at: string
+}
+
+export type NotificationWithContext = Notification & {
+  actor: ListingAuthor | null
+  listing: Pick<Listing, 'id' | 'title'> | null
+}
+
+export type ReportTarget = 'profile' | 'listing'
+
+export type ReportReason = 'spam' | 'harassment' | 'scam' | 'inappropriate' | 'other'
+
+export type ReportTargetInput = {
+  targetType: ReportTarget
+  targetId: string
+  targetAuthorId: string
+  reason: ReportReason
+  details: string
+}
